@@ -1,0 +1,28 @@
+:root {
+  --dd-scroll-track: #0f172a;
+  --dd-scroll-thumb: #475569;
+  --dd-scroll-thumb-hover: #64748b;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dd-scroll-thumb) var(--dd-scroll-track);
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dd-scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dd-scroll-thumb);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--dd-scroll-thumb-hover);
+}
