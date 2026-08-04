@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { ErrorPage } from '../pages/ErrorPage';
 import { EditorPage } from '../pages/EditorPage';
 import { TextView } from '../pages/TextView';
+import { HomePage } from '../pages/HomePage';
 
 
 const router = createBrowserRouter([
@@ -14,8 +15,12 @@ const router = createBrowserRouter([
         subtitle='La pagina que buscas no existe.'
       />,
     children: [
+      {
+        index:true,
+        element: <HomePage />
+      },
       { 
-        index: true, 
+        path: 'editor', 
         element: <EditorPage /> 
       }, {
         path: 'text',

@@ -9,7 +9,7 @@ interface EditorFormProps {
 export function EditorForm({ html, onHtmlChange }: EditorFormProps) {
     return (
         <div className="editor-section-container">
-            <label className="editor-section-label">Contenido</label>
+            <label className="editor-section-label">Content</label>
             <Editor 
                 value={html} 
                 onChange={(e) => onHtmlChange(e.target.value)} 

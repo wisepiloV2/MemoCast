@@ -1,0 +1,59 @@
+.main-layout-container {
+  --dd-bg: #202124; 
+  --dd-text-title: #f8fafc;
+  --dd-text: #e2e8f0;
+  --dd-text-muted: #94a3b8;
+  --dd-accent: #3b82f6;
+
+  background-color: var(--dd-bg);
+  color: var(--dd-text);
+  
+  min-height: 100vh;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.main-layout-content {
+  width: 100%;
+  max-width: 900px; 
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .main-layout-content {
+    padding: 2.5rem 2rem; 
+  }
+}
+
+.text-view-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--dd-text-title);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.text-view-category {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--dd-accent);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 767px) {
+  .text-view-title {
+    font-size: 1.5rem; 
+  }
+}

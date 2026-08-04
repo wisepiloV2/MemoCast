@@ -5,9 +5,15 @@ interface OptionsDropdownProps {
     initialOptions: string[];
     value: string;
     onChange: (value: string) => void;
+    allowCreate?: boolean; 
 }
 
-export function OptionsDropdown({ initialOptions, value, onChange }: OptionsDropdownProps) {
+export function OptionsDropdown({ 
+    initialOptions, 
+    value, 
+    onChange, 
+    allowCreate = false 
+}: OptionsDropdownProps) {
     const { 
         search, setSearch, options, showDropdown, setShowDropdown, containerRef 
     } = useOptionsDropdown({ initialOptions });
@@ -18,6 +24,10 @@ export function OptionsDropdown({ initialOptions, value, onChange }: OptionsDrop
         setSearch(""); 
     };
   
+  const exactMatchExists = initialOptions.some(
+      opt => opt.toLowerCase() === search.trim().toLowerCase()
+  );
+
   return (
     <div ref={containerRef} className="dropdown-container">
       
@@ -30,15 +40,11 @@ export function OptionsDropdown({ initialOptions, value, onChange }: OptionsDrop
           setShowDropdown(true);
         }}
         onClick={() => setShowDropdown(true)}
-        placeholder="Buscar opción..."
+        placeholder={allowCreate ? "Search or create category..." : "Search category..."}
       />
 
       {showDropdown && (
         <ul className="dropdown-list">
-          {options.length === 0 && (
-            <li className="dropdown-empty">No se encontraron resultados</li>
-          )}
-          
           {options.map((item, index) => (
             <li 
               key={index} 
@@ -48,6 +54,20 @@ export function OptionsDropdown({ initialOptions, value, onChange }: OptionsDrop
               {item}
             </li>
           ))}
+
+          {allowCreate && search.trim() !== "" && !exactMatchExists && (
+             <li 
+                className="dropdown-item create-new"
+                style={{ color: 'var(--dd-accent)', fontWeight: 'bold', cursor: 'pointer' }}
+                onClick={() => handleSelect(search.trim())}
+             >
+                + Crear "{search.trim()}"
+             </li>
+          )}
+
+          {options.length === 0 && (!allowCreate || search.trim() === "") && (
+            <li className="dropdown-empty">No results found</li>
+          )}
         </ul>
       )}
     </div>

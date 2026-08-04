@@ -1,7 +1,6 @@
 import Dexie, { type Table } from 'dexie';
 
-// Definimos la forma de nuestros datos
-export interface Documento {
+export interface Document {
     id?: number; 
     title: string;
     category: string;
@@ -9,22 +8,28 @@ export interface Documento {
     createdAt: Date;
 }
 
-export interface AudioArchivo {
+export interface AudioFile {
     id?: number;
-    documentoId: number; 
-    audioBlob: Blob;   
+    documentId: number;
+    audioBlob: Blob;
+}
+
+export interface Category {
+    id?: number;
+    name: string;
 }
 
 export class dbDexie extends Dexie {
-    documentos!: Table<Documento, number>;
-    audios!: Table<AudioArchivo, number>;
+    documents!: Table<Document, number>;
+    audioFiles!: Table<AudioFile, number>;
+    categories!: Table<Category, number>;
 
     constructor() {
-        super('MiAppLocalDB');
-        
-        this.version(1).stores({
-            documentos: '++id, category, createdAt',
-            audios: '++id, documentoId'
+        super('LocalDB');
+        this.version(2).stores({
+            documents: '++id, category, createdAt',
+            audioFiles: '++id, documentoId',
+            categories: '++id, &name' 
         });
     }
 }

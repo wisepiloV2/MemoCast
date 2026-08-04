@@ -7,30 +7,27 @@ import { ViewText } from '../../../component/ViewText/ViewText';
 
 export function MainEditor() {
     const {
-        title,
-        setTitle,
-        category,
-        setCategory,
-        categories ,
-        htmlText,
-        setHtmlText,
-        isPreviewOpen,
-        setIsPreviewOpen,
-        handleSubmit
+        title, setTitle,
+        category, setCategory,
+        userCategories,
+        htmlText, setHtmlText,
+        isPreviewOpen, setIsPreviewOpen,
+        handleSubmit,
+        
     }= useMainEditor();
 
     return (
         <>
         <form onSubmit={handleSubmit} className="main-editor-container">
-            <h2 className="main-editor-title">Crear Nuevo Registro</h2>
+            <h2 className="main-editor-title">Create New Record</h2>
             
             <div className="main-editor-content">
                 <Data 
                     title={title}
                     onTitleChange={setTitle}
-                    categoria={category}
-                    onCategoriaChange={setCategory}
-                    categorias={categories}
+                    category={category}
+                    onCategoryChange={setCategory}
+                    categories={userCategories}
                 />
 
                 <EditorForm 
@@ -48,7 +45,7 @@ export function MainEditor() {
                     Preview
                 </button>
                 <button type="submit" className="main-editor-submit-btn">
-                    Guardar Registro
+                    Save Record
                 </button>
             </div>
         </form>

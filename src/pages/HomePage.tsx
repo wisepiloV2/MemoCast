@@ -1,10 +1,10 @@
-import { ViewUserText } from "../feature/text";
 import { MainLayout } from '../component/layout/MainLayout'; 
+import { Home } from '../feature/home';
 
-export function TextView(){
+export function HomePage(){
     return (
         <MainLayout> 
-            <ViewUserText />
+            <Home />
         </MainLayout>
     );
 }

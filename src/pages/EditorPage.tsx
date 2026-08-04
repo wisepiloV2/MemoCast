@@ -1,9 +1,12 @@
 import { MainEditor } from "../feature/editor";
+import { MainLayout } from '../component/layout/MainLayout'; 
+import { BackButton } from "../component/BackButton/BackButton";
 
 export function EditorPage(){
     return (
-        <main style={{display: 'flex', flexDirection:'column', width: '100vw', height: '100vh', backgroundColor: '#202124', justifyContent: 'center', alignItems: 'center'}}>
+        <MainLayout>
+            <BackButton />
             <MainEditor />
-        </main>
+        </MainLayout>
     );
 }
