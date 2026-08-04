@@ -10,13 +10,12 @@ interface DocumentCardProps {
 }
 
 export function DocumentCard({ id, title, category }: DocumentCardProps) {
-    // Pasamos las props al hook
     const { isModalOpen, setIsModalOpen, handleDelete } = useDocumentCard(id, title);
     
     return (
         <>
             <div className="document-card-wrapper">
-                <Link to={`/view/${id}`} className="document-card-link">
+                <Link to={`/document/${id}`} className="document-card-link">
                     <span className="text-view-category">{category || "Uncategorized"}</span>
                     <h3 className="doc-card-title">{title || "Untitled Document"}</h3>
                 </Link>
@@ -24,7 +23,6 @@ export function DocumentCard({ id, title, category }: DocumentCardProps) {
                 <button 
                     className="doc-card-options-btn" 
                     onClick={() => setIsModalOpen(true)}
-                    aria-label={`Opciones para ${title}`}
                 >
                     ⋮
                 </button>

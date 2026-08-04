@@ -28,7 +28,7 @@ export class dbDexie extends Dexie {
         super('LocalDB');
         this.version(2).stores({
             documents: '++id, category, createdAt',
-            audioFiles: '++id, documentoId',
+            audioFiles: '++id, documentId',
             categories: '++id, &name' 
         });
     }

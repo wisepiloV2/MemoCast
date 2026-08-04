@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { MainLayout } from '../../../component/layout/MainLayout';
 import './Home.css';
 import { DocumentCard } from './DocumentCard';
 import { useHome } from '../hooks/useHome';

@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { ErrorPage } from '../pages/ErrorPage';
-import { EditorPage } from '../pages/EditorPage';
-import { TextView } from '../pages/TextView';
+import { EditorPage } from '../pages/Editor/EditorPage';
 import { HomePage } from '../pages/HomePage';
+import { DocumentPage } from '../pages/Document/DocumentPage';
 
 
 const router = createBrowserRouter([
@@ -22,9 +22,10 @@ const router = createBrowserRouter([
       { 
         path: 'editor', 
         element: <EditorPage /> 
-      }, {
-        path: 'text',
-        element: <TextView />
+      }, 
+      {
+        path: 'document/:id',
+        element: <DocumentPage />
       }
     ],
   }

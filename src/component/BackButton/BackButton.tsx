@@ -6,7 +6,7 @@ interface BackButtonProps {
     className?: string; 
 }
 
-export function BackButton({ label = "Volver", className = "btn-go-back" }: BackButtonProps) {
+export function BackButton({ label = "Volver", className = "" }: BackButtonProps) {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
@@ -15,9 +15,8 @@ export function BackButton({ label = "Volver", className = "btn-go-back" }: Back
 
     return (
         <button 
-            className={className} 
+            className={`btn-go-back ${className}`.trim()} 
             onClick={handleGoBack}
-            aria-label="Ir a la página anterior"
         >
             ← {label}
         </button>
