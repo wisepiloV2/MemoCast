@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import { ErrorPage } from '../pages/ErrorPage';
+import { ErrorPage } from '../pages/Error/ErrorPage';
 import { EditorPage } from '../pages/Editor/EditorPage';
 import { HomePage } from '../pages/HomePage';
 import { DocumentPage } from '../pages/Document/DocumentPage';

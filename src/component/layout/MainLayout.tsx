@@ -1,5 +1,5 @@
 import React from 'react';
-import './MainLayout.css';
+import styles from'./MainLayout.module.css';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -7,8 +7,8 @@ interface MainLayoutProps {
 
 export function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="main-layout-container">
-      <main className="main-layout-content">
+    <div className={styles.container}>
+      <main className={styles.content}>
         {children}
       </main>
     </div>

@@ -8,7 +8,7 @@ export function useDocument(id: string | undefined) {
     );
 
     const isLoading = id ? (document === undefined) : false;
-    const error = (!isLoading && !document) ? "Document not find" : null;
+    const error = (!isLoading && !document) ? "Document not found" : null;
 
     return { document, isLoading, error };
 }

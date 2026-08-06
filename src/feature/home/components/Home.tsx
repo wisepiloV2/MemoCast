@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Home.css';
-import { DocumentCard } from './DocumentCard';
+import { DocumentCard } from '../../document/components/DocumentCard';
 import { useHome } from '../hooks/useHome';
 
 export function Home() {

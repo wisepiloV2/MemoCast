@@ -4,6 +4,40 @@
   --dd-scroll-thumb-hover: #64748b;
 }
 
+:root {
+  /*MAIN CONTAIN*/
+  --bg-dark: #18181b;
+  /*MODAL*/
+  --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+  --modal-bg: #27272a;
+  --modal-border: #3f3f46;
+  --modal-radius: 0.75rem;
+  --modal-shadow-dark: rgba(0, 0, 0, 0.8);
+  --modal-shadow-light: rgba(0, 0, 0, 0.5);
+  /*BTNS*/
+  --btn-primary-bg: #3b82f6;     
+  --btn-primary-border: #3b82f6; 
+  --btn-primary-hover: #2563eb;  
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: transparent;
+  --btn-secondary-border: #3f3f46;               
+  --btn-secondary-hover-bg: rgba(255, 255, 255, 0.08); 
+  --btn-secondary-text: #e4e4e7;                
+  --btn-secondary-hover-border: #52525b;  
+  --btn-radius: 6px;
+  --btn-transition: all 0.2s ease-in-out;
+  /*TEXTS*/
+  --text-primary: #f4f4f5; 
+  --text-secondary: #a1a1aa; 
+  /* STATES */
+  --accent-error: #ef4444; 
+  /* CARDS */
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --card-hover-overlay: rgba(255, 255, 255, 0.1);
+  --error-hover-bg: rgba(239, 68, 68, 0.1);
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--dd-scroll-thumb) var(--dd-scroll-track);

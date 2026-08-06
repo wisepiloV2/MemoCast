@@ -3,7 +3,7 @@ import { EditorForm } from './EditorForm';
 import { useMainEditor } from '../hooks/useMainEditor';
 import './MainEditor.css';
 import { Modal } from '../../../component/Modal/Modal';
-import { ViewText } from '../../../component/ViewText/ViewText';
+import { DocumentContent } from '../../document';
 
 export function MainEditor() {
     const {
@@ -51,7 +51,7 @@ export function MainEditor() {
         </form>
 
         <Modal isOpen={isPreviewOpen} onClose={() => setIsPreviewOpen(false)}>
-            <ViewText 
+            <DocumentContent 
                     title={title}
                     category={category}
                     htmlText={htmlText}

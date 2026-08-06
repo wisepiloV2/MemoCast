@@ -1,0 +1,66 @@
+.documentCardWrapper {
+  position: relative;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  transition: transform 0.2s, border-color 0.2s;
+  display: flex;
+}
+
+.documentCardWrapper:hover {
+  transform: translateY(-2px);
+  border-color: var(--btn-primary-bg); 
+}
+
+.documentCardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docCardTitle {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  padding-right: 1.5rem; 
+}
+
+.docCardOptionsBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.optionsModalTitle {
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.optionsModalActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.optionsModalActions > * {
+  width: 100%;
+}
+
+.confirmText {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.confirmText strong {
+  color: var(--text-primary);
+}

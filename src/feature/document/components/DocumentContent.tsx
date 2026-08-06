@@ -1,0 +1,20 @@
+import styles from './DocumentContent.module.css';
+
+interface DocumentContentProps {
+    title: string;
+    category: string;
+    htmlText: string;
+}
+
+export function DocumentContent({ title, category, htmlText }: DocumentContentProps) {
+    return (
+        <div className={styles.documentContainer}>
+            <h1 className={styles.title}>{title || 'Sin título'}</h1>
+            <h4 className={styles.category}>{category || 'Sin categoría'}</h4>
+            <div 
+                className={styles.content}
+                dangerouslySetInnerHTML={{ __html: htmlText }}
+            />
+        </div>
+    );
+}

@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import './Modal.css';
+import styles from './Modal.module.css'
 
 interface ModalProps {
     isOpen: boolean;
@@ -11,14 +11,14 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
     if (!isOpen) return null;
 
     return (
-        <div className="modal-overlay" onClick={onClose}>
+        <div className={styles.overlay} onClick={onClose}>
             <div 
-                className="modal-content" 
+                className={styles.content}  
                 onClick={(e) => e.stopPropagation()}
             >
                 <button 
                     type="button" 
-                    className="modal-close" 
+                    className={styles.btn} 
                     onClick={onClose}
                 >
                     ✕
