@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './HomePage.module.css';
-import { DocumentCard, SearchInput, useSearchDocument } from '../../feature/document';
+import { DocumentCard, useSearchDocument } from '../../feature/document';
+import { SearchInput } from '../../component/SearchInput/SearchInput';
 import { Button } from '../../component/Button/Button';
 import { MainLayout } from '../../component/layout/MainLayout';
 
