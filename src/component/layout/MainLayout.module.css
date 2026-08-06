@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh; 
   background-color: var(--bg-dark); 
-  color: var(--btn-secondary-text); 
+  color: var(--text-secondary);
   display: flex;
   flex-direction: column;
 }
@@ -13,6 +13,7 @@
   margin: 0 auto;
   padding: 2rem; 
   position: relative; 
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {

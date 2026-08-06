@@ -2,24 +2,24 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { useState } from "react";
 import { db } from "../../../db/dbDexie";
 
-export function useHome(){
-    const [searchTerm, setSearchTerm] = useState("");
+export function useSearchDocument(){
+    const [query, setQuery] = useState("");
     const searchResults = useLiveQuery(
         () => {
-            if (!searchTerm) {
+            if (!query) {
                 return db.documents.orderBy('createdAt').reverse().limit(10).toArray();
             }
     
-            const lowerTerm = searchTerm.toLowerCase();
+            const lowerQuery = query.toLowerCase();
             return db.documents.filter(doc => 
-                doc.title.toLowerCase().includes(lowerTerm) || 
-                doc.category.toLowerCase().includes(lowerTerm)
+                doc.title.toLowerCase().includes(lowerQuery) || 
+                doc.category.toLowerCase().includes(lowerQuery)
             ).reverse().toArray();
         },
-        [searchTerm] 
+        [query] 
     );
     return {
-        searchTerm, setSearchTerm,
+        query, setQuery,
         searchResults
     }
 }
