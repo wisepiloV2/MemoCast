@@ -41,7 +41,7 @@ export function DocumentCard({ id, title, category }: DocumentCardProps) {
                     <>
                         <h2 className={styles.optionsModalTitle}>Document Options</h2>
                         <div className={styles.optionsModalActions}>
-                            <Button variant="primary" onClick={() => navigate(`/edit/${id}`)}>
+                            <Button variant="primary" onClick={() => navigate(`/editor/${id}`)}>
                                 Edit Document
                             </Button>
                             

@@ -1,56 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../../db/dbDexie";
+import { useCreateDocument } from "../../document/hooks/useCreateDocument";
+import { useUpdateDocument } from "../../document/hooks/useUpdateDocument";
 
-export function useMainEditor() {
+export function useMainEditor(documentId?: number) {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState(""); 
-    const userCategories = useLiveQuery(
-    () => db.categories.orderBy('name').keys()) as string[] || [];
-    
     const [htmlText, setHtmlText] = useState("Write here...");
     const [isPreviewOpen, setIsPreviewOpen] = useState(false);
     const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+
+    const { createDocument, isCreating } = useCreateDocument();
+    const { updateDocument, isUpdating } = useUpdateDocument();
+
+    const userCategories = useLiveQuery(
+        () => db.categories.orderBy('name').keys()
+    ) as string[] || [];
+
+    useEffect(() => {
+        const loadDocumentToEdit = async () => {
+            if (documentId) {
+                const doc = await db.documents.get(documentId);
+                if (doc) {
+                    setTitle(doc.title);
+                    setCategory(doc.category);
+                    setHtmlText(doc.htmlText);
+                }
+            }
+        };
+        loadDocumentToEdit();
+    }, [documentId]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); 
         
         try {
-            const cleanCategory = category.trim();
-            if (cleanCategory !== "") {
-                const exist = await db.categories.where('name').equalsIgnoreCase(cleanCategory).first();
-                if (!exist) {
-                    await db.categories.add({ name: cleanCategory });
-                }
+            if (documentId) {
+                await updateDocument(documentId, title, category, htmlText, audioBlob);
+                alert("Actualizado correctamente en tu navegador");
+            } else {
+                await createDocument(title, category, htmlText, audioBlob);
+                alert("Guardado correctamente en tu navegador");
+
+                setTitle("");
+                setCategory("");
+                setHtmlText("Write here...");
+                setAudioBlob(null);
             }
-
-            const newDocumentId = await db.documents.add({
-                title: title,
-                category: cleanCategory, 
-                htmlText: htmlText,
-                createdAt: new Date()
-            });
-
-            if (audioBlob) {
-                await db.audioFiles.add({
-                    documentId: newDocumentId,
-                    audioBlob: audioBlob
-                });
-            }
-
-            console.log("¡Documento guardado con éxito! ID:", newDocumentId);
-            alert("Guardado correctamente en tu navegador");
-
-            setTitle("");
-            setCategory("");
-            setHtmlText("Write here...");
-            setAudioBlob(null);
-
         } catch (error) {
-            console.error("Error al guardar en IndexedDB:", error);
             alert("Hubo un error al guardar el documento.");
         }
     };
+
+    const isSaving = isCreating || isUpdating;
 
     return {
         title, setTitle,
@@ -59,6 +62,7 @@ export function useMainEditor() {
         htmlText, setHtmlText,
         isPreviewOpen, setIsPreviewOpen,
         audioBlob, setAudioBlob,
-        handleSubmit
+        handleSubmit,
+        isSaving 
     };
 }

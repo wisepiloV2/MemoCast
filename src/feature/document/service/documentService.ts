@@ -27,5 +27,9 @@ export const documentService = {
   
   delete: async (id: number) => {
     return await db.documents.delete(id);
-  }
+  },
+  
+  update: async (id: number, documentData: Partial<Document>) => {
+    return await db.documents.update(id, documentData);
+  },
 };

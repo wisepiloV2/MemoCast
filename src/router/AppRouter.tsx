@@ -4,7 +4,6 @@ import { EditorPage } from '../pages/Editor/EditorPage';
 import { HomePage } from '../pages/HomePage';
 import { DocumentPage } from '../pages/Document/DocumentPage';
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,11 +15,15 @@ const router = createBrowserRouter([
       />,
     children: [
       {
-        index:true,
+        index: true,
         element: <HomePage />
       },
       { 
         path: 'editor', 
+        element: <EditorPage /> 
+      }, 
+      { 
+        path: 'editor/:id', 
         element: <EditorPage /> 
       }, 
       {
