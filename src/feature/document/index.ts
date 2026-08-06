@@ -1,4 +1,6 @@
 import { DocumentCard } from "./components/DocumentCard";
 import { DocumentContent } from "./components/DocumentContent";
-import { useDocument } from "./hooks/useDocument";
-export { DocumentCard, DocumentContent, useDocument };
+import { useDocumentById } from "./hooks/useDocumentById";
+import { useAllCategories } from "./hooks/useAllCategories";
+import { useDocumentsByCategory } from "./hooks/useDocumentByCategory";
+export { DocumentCard, DocumentContent, useDocumentById, useAllCategories, useDocumentsByCategory };

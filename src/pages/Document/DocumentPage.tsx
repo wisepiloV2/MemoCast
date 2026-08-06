@@ -1,14 +1,15 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { MainLayout } from '../../component/layout/MainLayout';
-import { useDocument } from '../../feature/document/hooks/useDocument';
-import { DocumentContent } from '../../feature/document/components/DocumentContent';
-import { Button } from '../../component/Button/Button'; // <-- Tu nuevo y flamante botón
+import { useDocumentById } from '../../feature/document';
+import { DocumentContent } from '../../feature/document';
+import { Button } from '../../component/Button/Button';
 import styles from './DocumentPage.module.css'; 
 
 export function DocumentPage() {
     const { id } = useParams(); 
     const navigate = useNavigate(); 
-    const { document, isLoading, error } = useDocument(id);
+    const documentId = id ? Number(id) : undefined;
+    const { document, isLoading, error } = useDocumentById(documentId);
 
     const renderContent = () => {
         if (isLoading) {
@@ -22,7 +23,9 @@ export function DocumentPage() {
         if (error || !document) {
             return (
                 <div className={styles.errorContainer}>
-                    <h2 className={styles.errorTitle}>{error || "Document not found"}</h2>
+                    <h2 className={styles.errorTitle}>
+                        {error ? error.message : "Document not found"}
+                    </h2>
                     <Button variant='secondary' onClick={() => navigate(-1)}>Back</Button>
                 </div>
             );
