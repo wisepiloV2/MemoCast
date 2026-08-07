@@ -9,7 +9,7 @@ export function DocumentPage() {
     const { id } = useParams(); 
     const navigate = useNavigate(); 
     const documentId = id ? Number(id) : undefined;
-    const { document, isLoading, error } = useDocumentById(documentId);
+    const { document, isLoading } = useDocumentById(documentId);
 
     const renderContent = () => {
         if (isLoading) {
@@ -20,11 +20,11 @@ export function DocumentPage() {
             );
         }
 
-        if (error || !document) {
+        if (!document) {
             return (
                 <div className={styles.errorContainer}>
                     <h2 className={styles.errorTitle}>
-                        {error ? error.message : "Document not found"}
+                        { "Document not found" }
                     </h2>
                     <Button variant='secondary' onClick={() => navigate(-1)}>Back</Button>
                 </div>
@@ -36,7 +36,7 @@ export function DocumentPage() {
                 <header className={styles.header}>
                     <Button variant='secondary' onClick={() => navigate(-1)}>Back</Button>
                     
-                    <Button variant="primary" onClick={() => navigate(`/edit/${id}`)}>
+                    <Button variant="primary" onClick={() => navigate(`/editor/${id}`)}>
                         Edit Document
                     </Button>
                 </header>

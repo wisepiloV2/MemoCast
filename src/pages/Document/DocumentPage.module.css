@@ -23,7 +23,8 @@
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
-    font-size: 1.125rem;
+    font-size: var(--text-lg);
+    
     animation: pulse 2s infinite ease-in-out;
 }
 
@@ -39,7 +40,7 @@
 
 .errorTitle {
     color: var(--text-primary);
-    font-size: 2rem;
+    font-size: var(--h2-size);
     margin: 0;
 }
 
