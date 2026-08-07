@@ -1,15 +1,14 @@
 import './Data.css'; 
-import { OptionsDropdown } from "../../../component/DropdownSearch/OptionsDropdown";
+import { CategorySelected } from '../../category';
 
 interface DataProps {
     title: string;
     onTitleChange: (title: string) => void;
     category: string;
-    categories: string[];
     onCategoryChange: (category: string) => void;
 }
 
-export function Data({ title, onTitleChange, category, onCategoryChange, categories }: DataProps) {
+export function Data({ title, onTitleChange, category, onCategoryChange }: DataProps) {
 
     return (
         <>
@@ -25,12 +24,9 @@ export function Data({ title, onTitleChange, category, onCategoryChange, categor
             </div>
             
             <div className="data-section-group">
-                <label className="data-section-label">Category</label>
-                <OptionsDropdown 
-                    initialOptions={categories}
+                <CategorySelected 
                     value={category}
-                    onChange={onCategoryChange}
-                    allowCreate={true}
+                    onChange={(selectedCategory) => onCategoryChange(selectedCategory)}
                 />
             </div>
         </>

@@ -1,5 +1,5 @@
 import Editor from 'react-simple-wysiwyg';
-import './EditorForm.css';
+import styles from './EditorForm.module.css';
 
 interface EditorFormProps {
     html: string;
@@ -8,12 +8,14 @@ interface EditorFormProps {
 
 export function EditorForm({ html, onHtmlChange }: EditorFormProps) {
     return (
-        <div className="editor-section-container">
-            <label className="editor-section-label">Content</label>
-            <Editor 
-                value={html} 
-                onChange={(e) => onHtmlChange(e.target.value)} 
-            />
+        <div className={styles.container}>
+            <label className={styles.label}>Content</label>
+            <div className={styles.editorWrapper}>
+                <Editor 
+                    value={html} 
+                    onChange={(e) => onHtmlChange(e.target.value)} 
+                />
+            </div>
         </div>
     );
 }

@@ -15,11 +15,27 @@ export function MainEditor({ documentId }: MainEditorProps) {
     const {
         title, setTitle,
         category, setCategory,
-        userCategories,
         htmlText, setHtmlText,
         isPreviewOpen, setIsPreviewOpen,
         handleSubmit,
+        isLoading, 
+        document,  
+        isSaving,
+        error 
     } = useMainEditor(documentId);
+
+    if (isLoading) {
+        return <div className="main-editor-container">Cargando editor...</div>;
+    }
+
+    if (isEditing && !document) {
+        return (
+            <div className="main-editor-container">
+                <h2>Error 404</h2>
+                <p>El documento que intentas editar no existe o fue eliminado.</p>
+            </div>
+        );
+    }
 
     return (
         <>
@@ -28,13 +44,29 @@ export function MainEditor({ documentId }: MainEditorProps) {
                 {isEditing ? "Edit Record" : "Create New Record"}
             </h2>
             
+            {error && (
+                <div 
+                    className="main-editor-error" 
+                    style={{ 
+                        color: 'var(--accent-error)', 
+                        backgroundColor: 'var(--error-hover-bg)', 
+                        border: '1px solid var(--accent-error)',
+                        padding: '12px', 
+                        borderRadius: 'var(--btn-radius)', 
+                        marginBottom: '1rem',
+                        fontWeight: '500'
+                    }}
+                >
+                    {error}
+                </div>
+            )}
+            
             <div className="main-editor-content">
                 <Data 
                     title={title}
                     onTitleChange={setTitle}
                     category={category}
                     onCategoryChange={setCategory}
-                    categories={userCategories}
                 />
 
                 <EditorForm 
@@ -51,8 +83,16 @@ export function MainEditor({ documentId }: MainEditorProps) {
                 >
                     Preview
                 </button>
-                <button type="submit" className="main-editor-submit-btn">
-                    {isEditing ? "Update Record" : "Save Record"}
+                
+                <button 
+                    type="submit" 
+                    className="main-editor-submit-btn"
+                    disabled={isSaving} 
+                >
+                    {isSaving 
+                        ? "Guardando..." 
+                        : isEditing ? "Update Record" : "Save Record"
+                    }
                 </button>
             </div>
         </form>

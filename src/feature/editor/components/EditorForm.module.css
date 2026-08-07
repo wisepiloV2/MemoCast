@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.editorWrapper {
+  border: 1px solid var(--btn-secondary-border);
+  border-radius: var(--btn-radius);
+  overflow: hidden;
+  transition: var(--btn-transition);
+}
+
+.editorWrapper:focus-within {
+  border-color: var(--btn-primary-border);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); 
+}
+
+.editorWrapper :global(.rsw-editor) {
+  border: none !important;
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+.editorWrapper :global(.rsw-toolbar) {
+  background-color: var(--card-bg) !important;
+  border-bottom: 1px solid var(--btn-secondary-border) !important;
+  padding: 0.5rem !important;
+}
+
+.editorWrapper :global(.rsw-btn) {
+  color: var(--text-primary) !important;
+  border-radius: 4px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.editorWrapper :global(.rsw-btn:hover) {
+  background-color: var(--btn-secondary-hover-bg) !important;
+}
+
+.editorWrapper :global(.rsw-ce) {
+  min-height: 250px !important;
+  padding: 1rem !important;
+  outline: none !important;
+}
+
+.editorWrapper :global(.rsw-toolbar select) {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--btn-secondary-border) !important;
+  border-radius: 4px !important;
+  padding: 0.2rem 0.5rem !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  outline: none !important;
+  transition: var(--btn-transition) !important;
+}
+
+.editorWrapper :global(.rsw-toolbar select:hover),
+.editorWrapper :global(.rsw-toolbar select:focus) {
+  border-color: var(--btn-primary-border) !important;
+}
+
+.editorWrapper :global(.rsw-toolbar select option) {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-primary) !important;
+}

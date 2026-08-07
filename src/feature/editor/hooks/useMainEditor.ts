@@ -1,68 +1,68 @@
 import { useState, useEffect } from "react";
-import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "../../../db/dbDexie";
-import { useCreateDocument } from "../../document/hooks/useCreateDocument";
-import { useUpdateDocument } from "../../document/hooks/useUpdateDocument";
+import { useDocumentById } from "../../document"; 
+import { useDocumentMutations } from "../../document/hooks/useDocumentMutations"; 
 
 export function useMainEditor(documentId?: number) {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState(""); 
     const [htmlText, setHtmlText] = useState("Write here...");
     const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-    const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
-
-    const { createDocument, isCreating } = useCreateDocument();
-    const { updateDocument, isUpdating } = useUpdateDocument();
-
-    const userCategories = useLiveQuery(
-        () => db.categories.orderBy('name').keys()
-    ) as string[] || [];
+    
+    const [error, setError] = useState<string | null>(null);
+    
+    const { document, isLoading } = useDocumentById(documentId);
+    const { createDocument, updateDocument, isSaving } = useDocumentMutations();
 
     useEffect(() => {
-        const loadDocumentToEdit = async () => {
-            if (documentId) {
-                const doc = await db.documents.get(documentId);
-                if (doc) {
-                    setTitle(doc.title);
-                    setCategory(doc.category);
-                    setHtmlText(doc.htmlText);
-                }
-            }
-        };
-        loadDocumentToEdit();
-    }, [documentId]);
+        if (document) {
+            setTitle(document.title);
+            setCategory(document.category);
+            setHtmlText(document.htmlText || "Write here...");
+        }
+    }, [document]);
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault(); 
+        e.preventDefault();
+        setError(null);
+        
+        if (!title.trim() || !category.trim()) {
+            setError("El título y la categoría son obligatorios.");
+            return;
+        }
         
         try {
-            if (documentId) {
-                await updateDocument(documentId, title, category, htmlText, audioBlob);
-                alert("Actualizado correctamente en tu navegador");
-            } else {
-                await createDocument(title, category, htmlText, audioBlob);
-                alert("Guardado correctamente en tu navegador");
+            const documentData = {
+                title: title.trim(),
+                category: category.trim(),
+                htmlText: htmlText
+            };
 
-                setTitle("");
-                setCategory("");
-                setHtmlText("Write here...");
-                setAudioBlob(null);
+            if (documentId) {
+                await updateDocument(documentId, documentData);
+            } else {
+                await createDocument({
+                    ...documentData,
+                    createdAt: new Date()
+                });
             }
-        } catch (error) {
-            alert("Hubo un error al guardar el documento.");
+
+            setTitle("");
+            setCategory("");
+            setHtmlText("Write here...");
+        } catch (err) {
+            setError("Hubo un error al guardar el documento. Inténtalo de nuevo.");
         }
     };
-
-    const isSaving = isCreating || isUpdating;
 
     return {
         title, setTitle,
         category, setCategory,
-        userCategories,
         htmlText, setHtmlText,
         isPreviewOpen, setIsPreviewOpen,
-        audioBlob, setAudioBlob,
         handleSubmit,
-        isSaving 
+        isLoading, 
+        document,
+        isSaving,
+        error 
     };
 }

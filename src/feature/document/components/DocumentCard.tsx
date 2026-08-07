@@ -8,9 +8,10 @@ interface DocumentCardProps {
     id: number;
     title: string;
     category: string;
+    onDelete: (id: number) => void;
 }
 
-export function DocumentCard({ id, title, category }: DocumentCardProps) {
+export function DocumentCard({ id, title, category, onDelete }: DocumentCardProps) {
     const navigate = useNavigate(); 
     
     const { 
@@ -18,15 +19,19 @@ export function DocumentCard({ id, title, category }: DocumentCardProps) {
         isConfirmingDelete, 
         setIsConfirmingDelete, 
         openModal, 
-        closeModal, 
-        executeDelete 
-    } = useDocumentCard(id);
+        closeModal,  
+    } = useDocumentCard();
+    
+    const handleConfirmDelete = () => {
+        onDelete(id);
+        closeModal();
+    };
     
     return (
         <>
             <div className={styles.documentCardWrapper}>
                 <Link to={`/document/${id}`} className={styles.documentCardLink}>
-                    <span className="text-view-category">{category || "Uncategorized"}</span>
+                    <span className={styles.textViewCategory}>{category || "Uncategorized"}</span>
                     <h3 className={styles.docCardTitle}>{title || "Untitled Document"}</h3>
                 </Link>
 
@@ -36,7 +41,6 @@ export function DocumentCard({ id, title, category }: DocumentCardProps) {
             </div>
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                
                 {!isConfirmingDelete ? (
                     <>
                         <h2 className={styles.optionsModalTitle}>Document Options</h2>
@@ -57,7 +61,7 @@ export function DocumentCard({ id, title, category }: DocumentCardProps) {
                             Are you sure you want to delete <strong>"{title}"</strong>? This action cannot be undone.
                         </p>
                         <div className={styles.optionsModalActions}>
-                            <Button variant="danger" onClick={executeDelete}>
+                            <Button variant="danger" onClick={handleConfirmDelete}>
                                 Yes, delete it
                             </Button>
                             

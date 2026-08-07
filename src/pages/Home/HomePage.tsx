@@ -1,13 +1,30 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './HomePage.module.css';
-import { DocumentCard, useSearchDocument } from '../../feature/document';
+import { DocumentCard, useSearchDocuments } from '../../feature/document';
+import { useDocumentMutations } from '../../feature/document'; 
 import { SearchInput } from '../../component/SearchInput/SearchInput';
 import { Button } from '../../component/Button/Button';
 import { MainLayout } from '../../component/layout/MainLayout';
 
 export function HomePage() {
-    const { query, setQuery, searchResults } = useSearchDocument();
+    const { results, isLoading, searchDocuments } = useSearchDocuments();
+    const { deleteDocument } = useDocumentMutations();
+    const [query, setQuery] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        searchDocuments(query, 6);
+    }, [query]); 
+
+    const handleDeleteDocument = async (id: number) => {
+        try {
+            await deleteDocument(id); 
+            searchDocuments(query, 6);
+        } catch (error) {
+            console.error("Error al eliminar el documento:", error);
+        }
+    };
 
     return (
         <MainLayout>
@@ -25,22 +42,23 @@ export function HomePage() {
                 <SearchInput 
                     query={query}
                     setQuery={setQuery}
-                    placeholder="Search by title or category..." 
+                    placeholder="Search by title..." 
                 />
             </div>
 
             <div className={styles.grid}>
-                {searchResults === undefined ? (
+                {isLoading ? (
                     <p className={styles.emptyState}>Loading documents...</p>
-                ) : searchResults.length === 0 ? (
+                ) : results.length === 0 ? (
                     <p className={styles.emptyState}>No documents found.</p>
                 ) : (
-                    searchResults.map(doc => (
+                    results.map(doc => (
                         <DocumentCard  
-                            id={doc.id}
                             key={doc.id}
+                            id={doc.id!} 
                             category={doc.category}
                             title={doc.title}
+                            onDelete={handleDeleteDocument}
                         />
                     ))
                 )}

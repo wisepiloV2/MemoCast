@@ -1,41 +1,81 @@
 :root {
-  --dd-scroll-track: #0f172a;
-  --dd-scroll-thumb: #475569;
-  --dd-scroll-thumb-hover: #64748b;
-}
+  /* SCROLLBAR */
+  --dd-scroll-track: #0f111a;
+  --dd-scroll-thumb: #2b2f42;
+  --dd-scroll-thumb-hover: #3d435e;
 
-:root {
-  /*MAIN CONTAIN*/
-  --bg-dark: #18181b;
-  /*MODAL*/
-  --modal-overlay-bg: rgba(0, 0, 0, 0.8);
-  --modal-bg: #27272a;
-  --modal-border: #3f3f46;
+  /* MAIN CONTAIN & OVERLAYS */
+  --bg-dark: #0f111a; /* Azul noche muy oscuro, casi negro */
+  --modal-overlay-bg: rgba(15, 17, 26, 0.85);
+  
+  /* MODALS & CARDS */
+  --modal-bg: #1a1d2d;
+  --card-bg: #1a1d2d;
+  --modal-border: #2b2f42;
+  --card-border: #2b2f42;
   --modal-radius: 0.75rem;
-  --modal-shadow-dark: rgba(0, 0, 0, 0.8);
-  --modal-shadow-light: rgba(0, 0, 0, 0.5);
-  /*BTNS*/
-  --btn-primary-bg: #3b82f6;     
-  --btn-primary-border: #3b82f6; 
-  --btn-primary-hover: #2563eb;  
+  --modal-shadow-dark: rgba(0, 0, 0, 0.6);
+  --modal-shadow-light: rgba(0, 0, 0, 0.3);
+  --card-hover-overlay: rgba(255, 255, 255, 0.04);
+
+  /* BTNS */
+  --btn-primary-bg: #7c3aed;     /* Violeta vibrante */
+  --btn-primary-border: #7c3aed; 
+  --btn-primary-hover: #6d28d9;  
   --btn-primary-text: #ffffff;
+  
   --btn-secondary-bg: transparent;
-  --btn-secondary-border: #3f3f46;               
-  --btn-secondary-hover-bg: rgba(255, 255, 255, 0.08); 
-  --btn-secondary-text: #e4e4e7;                
-  --btn-secondary-hover-border: #52525b;  
+  --btn-secondary-border: #3d435e;               
+  --btn-secondary-hover-bg: rgba(124, 58, 237, 0.1); 
+  --btn-secondary-text: #e2e8f0;                
+  --btn-secondary-hover-border: #7c3aed;  
+  
   --btn-radius: 6px;
   --btn-transition: all 0.2s ease-in-out;
-  /*TEXTS*/
-  --text-primary: #f4f4f5; 
-  --text-secondary: #a1a1aa; 
+
+  /* TEXTS */
+  --text-primary: #f8fafc; 
+  --text-secondary: #94a3b8; 
+
   /* STATES */
-  --accent-error: #ef4444; 
-  /* CARDS */
-  --card-bg: #1e293b;
-  --card-border: #334155;
-  --card-hover-overlay: rgba(255, 255, 255, 0.1);
-  --error-hover-bg: rgba(239, 68, 68, 0.1);
+  --accent-error: #f43f5e; /* Rojo frambuesa brillante */
+  --error-hover-bg: rgba(244, 63, 94, 0.1);
+
+  /*TEXT FONTSIZE*/
+  --text-xs: 0.75rem;    /* 12px - Textos legales, etiquetas pequeñas */
+  --text-sm: 0.875rem;   /* 14px - Subtítulos de componentes, inputs */
+  --text-base: 1rem;     /* 16px - Párrafos, texto principal (DEFAULT) */
+  --text-lg: 1.125rem;   /* 18px - Títulos de componentes pequeños */
+  --text-xl: 1.25rem;    /* 20px - Subtítulos de formularios / secciones */
+  --text-2xl: 1.5rem;    /* 24px - Títulos de formularios / tarjetas */
+  --text-3xl: 1.875rem;  /* 30px - Subtítulos de página (h2) */
+  --text-4xl: 2.25rem;   /* 36px - Títulos principales (h1) */
+  
+  /* Titles  */
+  --h1-size: var(--text-4xl);
+  --h2-size: var(--text-3xl);
+  --h3-size: var(--text-2xl);
+  
+  /* Forms */
+  --form-title-size: var(--text-2xl);
+  --form-subtitle-size: var(--text-lg);
+  --form-input-size: var(--text-base);
+  
+  /* Components (Cards, Modals, etc.) */
+  --card-title-size: var(--text-xl);
+  --card-text-size: var(--text-sm);
+
+  /*Btns*/
+  --btn-py-sm: 0.25rem;
+  --btn-px-sm: 0.75rem;
+  
+  /* Base / Normal (El estándar para formularios y acciones) */
+  --btn-py-base: 0.5rem;
+  --btn-px-base: 1rem;
+  
+  /* Grande (Para el "Call to Action" principal, héroes de la web) */
+  --btn-py-lg: 0.75rem;
+  --btn-px-lg: 1.5rem;
 }
 
 * {
@@ -59,4 +99,39 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--dd-scroll-thumb-hover);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  font-family: system-ui, -apple-system, sans-serif; 
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --text-xs: 0.875rem;   
+    --text-sm: 1rem;       
+    --text-base: 1.125rem; 
+    --text-lg: 1.25rem;    
+    --text-xl: 1.5rem;     
+    --text-2xl: 1.875rem;  
+    --text-3xl: 2.25rem;   
+    --text-4xl: 3rem;      
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --text-xs: 1rem;       /* 16px */
+    --text-sm: 1.125rem;   /* 18px */
+    --text-base: 1.25rem;  /* 20px */
+    --text-lg: 1.5rem;     /* 24px */
+    --text-xl: 1.875rem;   /* 30px */
+    --text-2xl: 2.25rem;   /* 36px */
+    --text-3xl: 3rem;      /* 48px */
+    --text-4xl: 4rem;      /* 64px */
+  }
 }

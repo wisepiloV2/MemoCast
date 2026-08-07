@@ -1,7 +1,7 @@
 .input {
   width: 100%;
-  padding: 0.625rem 1rem;
-  font-size: 0.95rem;
+  padding: 0.625rem 1rem; 
+  font-size: var(--form-input-size); 
   font-family: inherit;
   background-color: transparent; 
   color: var(--text-primary);
@@ -22,5 +22,5 @@
 
 .input:focus {
   border-color: var(--btn-primary-border);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); 
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2); 
 }

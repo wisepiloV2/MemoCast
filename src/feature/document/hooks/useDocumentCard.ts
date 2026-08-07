@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { db } from "../../../db/dbDexie"; 
 
-export function useDocumentCard(id: number) {
+export function useDocumentCard() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
 
@@ -9,15 +8,8 @@ export function useDocumentCard(id: number) {
     
     const closeModal = () => {
         setIsModalOpen(false);
+        // Esperamos a que termine la animación de cierre para resetear el estado
         setTimeout(() => setIsConfirmingDelete(false), 200); 
-    };
-
-    const executeDelete = async () => {
-        try {
-            await db.documents.delete(id);
-            closeModal();
-        } catch (error) {
-        }
     };
 
     return { 
@@ -25,7 +17,6 @@ export function useDocumentCard(id: number) {
         isConfirmingDelete,
         setIsConfirmingDelete,
         openModal,
-        closeModal,
-        executeDelete
+        closeModal
     };
 }
