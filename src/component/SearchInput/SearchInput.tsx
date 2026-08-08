@@ -1,12 +1,13 @@
 import styles from './SearchInput.module.css'
 
 interface SearchInputProps {
-    query : string;
-    setQuery : ( query : string ) => void;
-    placeholder : string; 
+    query: string;
+    setQuery: (query: string) => void;
+    placeholder: string; 
+    onFocus?: () => void; 
 }
 
-export function SearchInput({query, setQuery, placeholder} : SearchInputProps){
+export function SearchInput({ query, setQuery, placeholder, onFocus }: SearchInputProps) {
     return (
         <input 
             type="text" 
@@ -14,6 +15,7 @@ export function SearchInput({query, setQuery, placeholder} : SearchInputProps){
             placeholder={placeholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onFocus={onFocus} 
         />
     );
 }

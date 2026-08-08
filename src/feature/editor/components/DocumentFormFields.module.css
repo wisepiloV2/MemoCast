@@ -1,0 +1,82 @@
+/* DocumentFormFields.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.015em;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.625rem 0.875rem;
+  font-size: var(--form-input-size);
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: var(--btn-radius);
+  outline: none;
+  font-family: inherit;
+  transition: var(--btn-transition);
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.input:hover {
+  border-color: var(--dd-scroll-thumb-hover);
+  background-color: var(--card-hover-overlay);
+}
+
+.input:focus {
+  border-color: var(--btn-primary-border);
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+/* Resalta el input si contiene errores si decides pasarle una clase condicional */
+.inputError {
+  border-color: var(--accent-error) !important;
+}
+
+.errorText {
+  font-size: var(--text-xs);
+  color: var(--accent-error);
+  font-weight: 500;
+  margin-top: 0.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

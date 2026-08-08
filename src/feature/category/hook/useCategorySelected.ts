@@ -10,25 +10,29 @@ interface UseCategorySelectedProps {
 export function useCategorySelected({ value, onChange }: UseCategorySelectedProps) {
   const [query, setQuery] = useState(value || "");
   const [isOpen, setIsOpen] = useState(false);
-
   const { results, searchCategory, isLoading } = useSearchCategory();
   const { createCategory, isSaving } = useCategoryMutations();
 
   useEffect(() => {
-    if (!isOpen) return;
-    searchCategory(query);
+    if (isOpen) {
+      searchCategory(query);
+    }
   }, [query, isOpen]);
+
+  useEffect(() => {
+    setQuery(value || "");
+  }, [value]);
 
   const handleSelect = (categoryName: string) => {
     setQuery(categoryName);
     onChange(categoryName); 
-    setIsOpen(false);     
+    setIsOpen(false);    
   };
 
   const handleCreateNew = async () => {
     if (!query.trim()) return;
     try {
-      await createCategory(query);
+      await createCategory(query.trim());
       handleSelect(query.trim());
     } catch (error) {
       console.error("Hubo un error al crear la categoría", error);

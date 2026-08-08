@@ -28,25 +28,33 @@ export function CategorySelected({ value, onChange }: CategorySelectedProps) {
           setQuery(newQuery);
           setIsOpen(true);
         }}
+        onFocus={() => setIsOpen(true)}
       />
 
-      {isOpen && query.trim() !== "" && (
+      {isOpen && (
         <ul className={styles.dropdown}>
           {isLoading && <li className={styles.itemLoading}>Buscando...</li>}
 
           {!isLoading && results.map((cat) => (
             <li 
               key={cat.id} 
-              onClick={() => handleSelect(cat.name)}
+              onClick={() => {
+                handleSelect(cat.name);
+                setIsOpen(false); 
+              }}
               className={styles.item}
             >
               {cat.name}
             </li>
           ))}
 
-          {!isLoading && !exactMatchExists && (
+          {/* Solo mostramos la opción de crear si el usuario escribió algo que no existe */}
+          {!isLoading && query.trim() !== "" && !exactMatchExists && (
             <li 
-              onClick={handleCreateNew}
+              onClick={() => {
+                handleCreateNew();
+                setIsOpen(false);
+              }}
               className={`${styles.item} ${styles.itemCreate}`}
             >
               {isSaving ? "Creating..." : `+ Create new category "${query}"`}

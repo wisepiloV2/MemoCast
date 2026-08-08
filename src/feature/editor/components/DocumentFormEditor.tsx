@@ -1,19 +1,19 @@
 import Editor from 'react-simple-wysiwyg';
-import styles from './EditorForm.module.css';
+import styles from './DocumentFormEditor.module.css';
 
 interface EditorFormProps {
-    html: string;
-    onHtmlChange: (newHtml: string) => void;
+    value: string;
+    onChange: (newHtml: string) => void;
 }
 
-export function EditorForm({ html, onHtmlChange }: EditorFormProps) {
+export function DocumentFormEditor({ value, onChange }: EditorFormProps) {
     return (
         <div className={styles.container}>
             <label className={styles.label}>Content</label>
             <div className={styles.editorWrapper}>
                 <Editor 
-                    value={html} 
-                    onChange={(e) => onHtmlChange(e.target.value)} 
+                    value={value} 
+                    onChange={(e) => onChange(e.target.value)} 
                 />
             </div>
         </div>
