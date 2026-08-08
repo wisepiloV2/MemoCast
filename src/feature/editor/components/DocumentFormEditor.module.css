@@ -1,26 +1,31 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--btn-py-base);
   width: 100%;
 }
 
 .label {
-  color: var(--text-primary);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.015em;
+  user-select: none;
+  transition: color 0.2s ease;
 }
 
 .editorWrapper {
+  position: relative;
   border: 1px solid var(--btn-secondary-border);
   border-radius: var(--btn-radius);
+  background-color: var(--card-bg);
   overflow: hidden;
   transition: var(--btn-transition);
 }
 
 .editorWrapper:focus-within {
   border-color: var(--btn-primary-border);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); 
+  box-shadow: 0 0 0 3px var(--btn-secondary-hover-bg); 
 }
 
 .editorWrapper :global(.rsw-editor) {
@@ -30,34 +35,84 @@
 }
 
 .editorWrapper :global(.rsw-toolbar) {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;  
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch;
   background-color: var(--card-bg) !important;
-  border-bottom: 1px solid var(--btn-secondary-border) !important;
-  padding: 0.5rem !important;
+  border-bottom: 1px solid var(--card-border) !important;
+  padding: var(--btn-py-sm) var(--btn-px-sm) !important;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar {
+  height: 4px;
+}
+
+.editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar-track {
+  background: var(--dd-scroll-track);
+}
+
+.editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar-thumb {
+  background-color: var(--dd-scroll-thumb);
+  border-radius: 9999px;
+}
+
+.editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar-thumb:hover {
+  background-color: var(--dd-scroll-thumb-hover);
 }
 
 .editorWrapper :global(.rsw-btn) {
-  color: var(--text-primary) !important;
-  border-radius: 4px !important;
-  transition: background-color 0.2s ease !important;
+  flex-shrink: 0 !important; 
+  color: var(--btn-secondary-text) !important;
+  border-radius: var(--btn-radius) !important;
+  transition: var(--btn-transition) !important;
 }
 
 .editorWrapper :global(.rsw-btn:hover) {
   background-color: var(--btn-secondary-hover-bg) !important;
+  color: var(--text-primary) !important;
 }
 
 .editorWrapper :global(.rsw-ce) {
   min-height: 250px !important;
-  padding: 1rem !important;
+  max-height: 400px !important; 
+  overflow-y: auto !important;  
+  padding: var(--btn-px-base) !important;
   outline: none !important;
+  font-size: var(--text-base) !important;
+  color: var(--text-primary) !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dd-scroll-thumb) var(--dd-scroll-track);
+}
+
+.editorWrapper :global(.rsw-ce)::-webkit-scrollbar {
+  width: 6px;
+}
+
+.editorWrapper :global(.rsw-ce)::-webkit-scrollbar-track {
+  background: var(--dd-scroll-track);
+}
+
+.editorWrapper :global(.rsw-ce)::-webkit-scrollbar-thumb {
+  background-color: var(--dd-scroll-thumb);
+  border-radius: 9999px;
+}
+
+.editorWrapper :global(.rsw-ce)::-webkit-scrollbar-thumb:hover {
+  background-color: var(--dd-scroll-thumb-hover);
 }
 
 .editorWrapper :global(.rsw-toolbar select) {
+  flex-shrink: 0 !important;
   background-color: transparent !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--btn-secondary-border) !important;
-  border-radius: 4px !important;
-  padding: 0.2rem 0.5rem !important;
-  font-size: 0.9rem !important;
+  border-radius: var(--btn-radius) !important;
+  padding: var(--btn-py-sm) var(--btn-px-sm) !important;
+  font-size: var(--text-sm) !important;
   cursor: pointer !important;
   outline: none !important;
   transition: var(--btn-transition) !important;
@@ -71,4 +126,82 @@
 .editorWrapper :global(.rsw-toolbar select option) {
   background-color: var(--bg-dark) !important;
   color: var(--text-primary) !important;
+}
+
+@media (max-width: 768px) {
+  .editorWrapper {
+    position: relative !important;
+    padding-right: 85px !important; 
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  .editorWrapper :global(.rsw-toolbar) {
+    position: absolute !important;
+    top: 6px !important;
+    right: 6px !important;
+    left: auto !important;
+    bottom: 6px !important;
+    width: 60px !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    background-color: var(--bg-dark) !important;
+    border: 1px solid var(--modal-border) !important;
+    border-radius: var(--btn-radius) !important;
+    padding: 6px 4px !important;
+    gap: 4px !important;
+    z-index: 20 !important;
+    overflow-y: auto !important;
+    overflow-x: visible !important; 
+    
+    box-shadow: 0 2px 8px var(--modal-shadow-dark);
+    scrollbar-width: none;
+  }
+
+  .editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar {
+    display: none;
+  }
+
+  .editorWrapper :global(.rsw-toolbar) > * {
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  .editorWrapper :global(.rsw-toolbar select) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 28px !important;
+    font-size: var(--text-xs) !important;
+    padding: 2px !important;
+    margin-bottom: 4px !important;
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--btn-secondary-border) !important;
+    border-radius: var(--btn-radius) !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .editorWrapper :global(.rsw-btn) {
+    flex-shrink: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .editorWrapper :global(.rsw-ce) {
+    min-height: 470px !important;
+    max-height: 470px !important;
+    overflow-y: auto !important;
+    padding: var(--btn-px-base) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }

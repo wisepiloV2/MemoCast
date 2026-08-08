@@ -33,7 +33,7 @@ export function CategorySelected({ value, onChange }: CategorySelectedProps) {
 
       {isOpen && (
         <ul className={styles.dropdown}>
-          {isLoading && <li className={styles.itemLoading}>Buscando...</li>}
+          {isLoading && <li className={styles.itemLoading}>Searching...</li>}
 
           {!isLoading && results.map((cat) => (
             <li 
@@ -48,7 +48,6 @@ export function CategorySelected({ value, onChange }: CategorySelectedProps) {
             </li>
           ))}
 
-          {/* Solo mostramos la opción de crear si el usuario escribió algo que no existe */}
           {!isLoading && query.trim() !== "" && !exactMatchExists && (
             <li 
               onClick={() => {

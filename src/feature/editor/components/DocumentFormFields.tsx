@@ -10,12 +10,12 @@ export function DocumentFormFields() {
     <div className={styles.container}>
       
       <div className={styles.group}>
-        <label className={styles.label}>Título del documento</label>
+        <label className={styles.label}>Title</label>
         <input 
           type="text" 
           className={styles.input}
-          placeholder="Escribe un título..."
-          {...register("title", { required: "El título es obligatorio" })}
+          placeholder="Write your title..."
+          {...register("title", { required: "Title is required" })}
         />
         {errors.title && (
           <span className={styles.errorText}>{errors.title.message as string}</span>
@@ -23,11 +23,11 @@ export function DocumentFormFields() {
       </div>
 
       <div className={styles.group}>
-        <label className={styles.label}>Categoría</label>
+        <label className={styles.label}>Category</label>
         <Controller
           name="category"
           control={control}
-          rules={{ required: "Selecciona o crea una categoría" }}
+          rules={{ required: "Select or create a category" }}
           render={({ field: { value, onChange } }) => (
             <CategorySelected value={value} onChange={onChange} />
           )}
@@ -41,7 +41,7 @@ export function DocumentFormFields() {
         <Controller
           name="htmlText" 
           control={control}
-          rules={{ required: "El contenido del documento no puede estar vacío" }}
+          rules={{ required: "Document content cannot be empty" }}
           render={({ field: { value, onChange } }) => (
             <DocumentFormEditor 
               value={value || ""}

@@ -70,7 +70,7 @@ export function EditorPage() {
         return (
             <MainLayout>
                 <div className={styles.loadingContainer}>
-                    <p className={styles.loadingText}>Cargando datos del documento...</p>
+                    <p className={styles.loadingText}>Loading document...</p>
                 </div>
             </MainLayout>
         );
@@ -84,7 +84,7 @@ export function EditorPage() {
                 </header>
                 
                 <h1 className={styles.title}>
-                    {isEditing ? "Editar Documento" : "Crear Nuevo Documento"}
+                    {isEditing ? "Edit document" : "Create new document"}
                 </h1>
 
                 <FormProvider {...methods}>
@@ -94,7 +94,7 @@ export function EditorPage() {
 
                         <div className={styles.formActions}>
                             <Button type="submit" disabled={isSaving}>
-                                {isSaving ? "Guardando..." : (isEditing ? "Actualizar Documento" : "Guardar Documento")}
+                                {isSaving ? "Saving..." : (isEditing ? "Update document" : "Save document")}
                             </Button>
                         </div>
                     </form>

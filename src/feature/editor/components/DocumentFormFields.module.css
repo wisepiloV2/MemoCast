@@ -1,5 +1,3 @@
-/* DocumentFormFields.module.css */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -54,7 +52,6 @@
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
 }
 
-/* Resalta el input si contiene errores si decides pasarle una clase condicional */
 .inputError {
   border-color: var(--accent-error) !important;
 }

@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 import styles from './Modal.module.css'
+import { Button } from '../Button/Button';
 
 interface ModalProps {
     isOpen: boolean;
@@ -16,13 +17,14 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
                 className={styles.content}  
                 onClick={(e) => e.stopPropagation()}
             >
-                <button 
+                <Button 
+                    variant='ghost'
                     type="button" 
                     className={styles.btn} 
                     onClick={onClose}
                 >
                     ✕
-                </button>
+                </Button>
                 {children}
             </div>
         </div>
