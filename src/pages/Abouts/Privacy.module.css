@@ -1,0 +1,82 @@
+.main {
+  background-color: var(--bg-dark);
+  padding: 4rem 1rem 6rem;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: var(--h1-size);
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.intro {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: var(--h2-size);
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.paragraph {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.list {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.listItem {
+  font-size: var(--text-base);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.listItem::marker {
+  color: var(--btn-primary-bg);
+}
+
+.highlight {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.alertBox {
+  background-color: var(--card-bg);
+  border: 1px solid var(--btn-primary-border);
+  border-radius: var(--modal-radius);
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.alertTitle {
+  color: var(--text-primary);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}

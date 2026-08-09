@@ -1,0 +1,138 @@
+.footer {
+  background-color: var(--bg-dark);
+  border-top: 1px solid var(--card-border);
+  padding: 2rem 0;
+  margin-top: auto;
+}
+
+.container {
+  max-width: 72rem; 
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+/* Identidad */
+.identity {
+  display: flex;
+  flex-direction: column;
+  max-width: 24rem;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.logoText {
+  font-size: var(--card-title-size);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.versionBadge {
+  font-size: var(--text-xs);
+  font-family: monospace;
+  background-color: var(--card-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.description {
+  margin-top: 0.5rem;
+  font-size: var(--card-text-size);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: var(--card-text-size);
+  font-weight: 500;
+}
+
+.navLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--btn-transition);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialIcon {
+  color: var(--text-secondary);
+  transition: var(--btn-transition);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.socialIcon:hover {
+  color: var(--btn-primary-bg); 
+}
+
+.bottomSection {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-size: var(--card-text-size);
+  color: var(--text-secondary);
+}
+
+.tagline {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .topSection {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .bottomSection {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}

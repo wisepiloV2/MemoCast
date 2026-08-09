@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import { ErrorPage, HomePage, EditorPage, DocumentPage } from '../pages';
+import { ErrorPage, HomePage, EditorPage, DocumentPage, About, Privacy } from '../pages';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +26,13 @@ const router = createBrowserRouter([
       {
         path: 'document/:id',
         element: <DocumentPage />
+      },
+      {
+        path: 'about',
+        element: <About />
+      },
+      { path: 'privacy',
+        element: <Privacy />
       }
     ],
   }

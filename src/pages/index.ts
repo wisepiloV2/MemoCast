@@ -2,4 +2,6 @@ import { DocumentPage } from "./Document/DocumentPage";
 import { EditorPage } from "./Editor/EditorPage";
 import { ErrorPage } from "./Error/ErrorPage";
 import { HomePage } from "./Home/HomePage";
-export {HomePage, DocumentPage, EditorPage, ErrorPage}
+import { About } from "./Abouts/About";
+import { Privacy } from "./Abouts/Privacy";
+export {HomePage, DocumentPage, EditorPage, ErrorPage, About, Privacy}
