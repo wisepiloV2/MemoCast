@@ -1,16 +1,18 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; 
   gap: 1.5rem;
   width: 100%;
-  box-sizing: border-box;
+  align-items: flex-start; 
+  flex-wrap: wrap; 
 }
 
 .group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%;
+  flex: 1; 
+  min-width: 250px; 
 }
 
 .label {

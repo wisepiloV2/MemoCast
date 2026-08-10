@@ -1,21 +1,26 @@
-.container {
+.group {
   display: flex;
   flex-direction: column;
-  gap: var(--btn-py-base);
+  gap: 0.5rem;
   width: 100%;
+  flex-grow: 1; 
+  height: 100%;
 }
 
-.label {
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: 0.015em;
-  user-select: none;
-  transition: color 0.2s ease;
+.errorText {
+  font-size: var(--text-xs);
+  color: var(--accent-error);
+  font-weight: 500;
+  margin-top: 0.125rem;
 }
 
 .editorWrapper {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 65vh; 
+  height: 100%;
+  flex-grow: 1;
   border: 1px solid var(--btn-secondary-border);
   border-radius: var(--btn-radius);
   background-color: var(--card-bg);
@@ -32,8 +37,13 @@
   border: none !important;
   background-color: transparent !important;
   color: var(--text-primary) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  flex-grow: 1 !important;
 }
 
+/* --- BARRA DE TAREAS --- */
 .editorWrapper :global(.rsw-toolbar) {
   display: flex !important;
   flex-wrap: nowrap !important;
@@ -45,21 +55,21 @@
   padding: var(--btn-py-sm) var(--btn-px-sm) !important;
   gap: 0.25rem;
   align-items: center;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
 }
 
 .editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar {
   height: 4px;
 }
-
 .editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar-track {
   background: var(--dd-scroll-track);
 }
-
 .editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar-thumb {
   background-color: var(--dd-scroll-thumb);
   border-radius: 9999px;
 }
-
 .editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar-thumb:hover {
   background-color: var(--dd-scroll-thumb-hover);
 }
@@ -72,18 +82,19 @@
 }
 
 .editorWrapper :global(.rsw-btn:hover) {
-  background-color: var(--btn-secondary-hover-bg) !important;
+  background-color: rgba(128, 128, 128, 0.25) !important;
   color: var(--text-primary) !important;
 }
 
 .editorWrapper :global(.rsw-ce) {
-  min-height: 250px !important;
-  max-height: 400px !important; 
+  flex: 1 1 auto !important; 
+  height: 0 !important; 
   overflow-y: auto !important;  
-  padding: var(--btn-px-base) !important;
+  padding: 2rem !important; 
   outline: none !important;
   font-size: var(--text-base) !important;
   color: var(--text-primary) !important;
+  
   scrollbar-width: thin;
   scrollbar-color: var(--dd-scroll-thumb) var(--dd-scroll-track);
 }
@@ -91,23 +102,20 @@
 .editorWrapper :global(.rsw-ce)::-webkit-scrollbar {
   width: 6px;
 }
-
 .editorWrapper :global(.rsw-ce)::-webkit-scrollbar-track {
   background: var(--dd-scroll-track);
 }
-
 .editorWrapper :global(.rsw-ce)::-webkit-scrollbar-thumb {
   background-color: var(--dd-scroll-thumb);
   border-radius: 9999px;
 }
-
 .editorWrapper :global(.rsw-ce)::-webkit-scrollbar-thumb:hover {
   background-color: var(--dd-scroll-thumb-hover);
 }
 
 .editorWrapper :global(.rsw-toolbar select) {
   flex-shrink: 0 !important;
-  background-color: transparent !important;
+  background-color: var(--card-bg) !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--btn-secondary-border) !important;
   border-radius: var(--btn-radius) !important;
@@ -115,7 +123,7 @@
   font-size: var(--text-sm) !important;
   cursor: pointer !important;
   outline: none !important;
-  transition: var(--btn-transition) !important;
+  color-scheme: dark light; 
 }
 
 .editorWrapper :global(.rsw-toolbar select:hover),
@@ -124,84 +132,21 @@
 }
 
 .editorWrapper :global(.rsw-toolbar select option) {
-  background-color: var(--bg-dark) !important;
-  color: var(--text-primary) !important;
+  background-color: #1e1e20 !important; 
+  color: #ffffff !important;
+}
+
+.editorWrapper :global(.rsw-toolbar select option:checked) {
+  background-color: var(--btn-primary-border) !important;
+  color: #ffffff !important;
+}
+
+.editorWrapper :global(.rsw-btn[data-active=true]){
+  color: #1e1e20 !important;
 }
 
 @media (max-width: 768px) {
-  .editorWrapper {
-    position: relative !important;
-    padding-right: 85px !important; 
-    box-sizing: border-box !important;
-    overflow: visible !important;
-  }
-
-  .editorWrapper :global(.rsw-toolbar) {
-    position: absolute !important;
-    top: 6px !important;
-    right: 6px !important;
-    left: auto !important;
-    bottom: 6px !important;
-    width: 60px !important; 
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    background-color: var(--bg-dark) !important;
-    border: 1px solid var(--modal-border) !important;
-    border-radius: var(--btn-radius) !important;
-    padding: 6px 4px !important;
-    gap: 4px !important;
-    z-index: 20 !important;
-    overflow-y: auto !important;
-    overflow-x: visible !important; 
-    
-    box-shadow: 0 2px 8px var(--modal-shadow-dark);
-    scrollbar-width: none;
-  }
-
-  .editorWrapper :global(.rsw-toolbar)::-webkit-scrollbar {
-    display: none;
-  }
-
-  .editorWrapper :global(.rsw-toolbar) > * {
-    display: flex !important;
-    visibility: visible !important;
-  }
-
-  .editorWrapper :global(.rsw-toolbar select) {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 28px !important;
-    font-size: var(--text-xs) !important;
-    padding: 2px !important;
-    margin-bottom: 4px !important;
-    background-color: var(--card-bg) !important;
-    color: var(--text-primary) !important;
-    border: 1px solid var(--btn-secondary-border) !important;
-    border-radius: var(--btn-radius) !important;
-    text-overflow: ellipsis !important;
-  }
-
-  .editorWrapper :global(.rsw-btn) {
-    flex-shrink: 0 !important;
-    width: 32px !important;
-    height: 32px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
   .editorWrapper :global(.rsw-ce) {
-    min-height: 470px !important;
-    max-height: 470px !important;
-    overflow-y: auto !important;
-    padding: var(--btn-px-base) !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
+    padding: 1rem !important; 
   }
 }
