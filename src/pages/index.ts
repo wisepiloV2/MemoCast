@@ -4,4 +4,5 @@ import { ErrorPage } from "./Error/ErrorPage";
 import { HomePage } from "./Home/HomePage";
 import { About } from "./Abouts/About";
 import { Privacy } from "./Abouts/Privacy";
-export {HomePage, DocumentPage, EditorPage, ErrorPage, About, Privacy}
+import { SettingsPage } from "./Setting/SettingsPage";
+export {HomePage, DocumentPage, EditorPage, ErrorPage, About, Privacy, SettingsPage}

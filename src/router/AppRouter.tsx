@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import { ErrorPage, HomePage, EditorPage, DocumentPage, About, Privacy } from '../pages';
+import { ErrorPage, HomePage, EditorPage, DocumentPage, About, Privacy, SettingsPage } from '../pages';
 import { VoiceManager } from '../feature/piper/components/VoiceManager';
 
 const router = createBrowserRouter([
@@ -34,6 +34,9 @@ const router = createBrowserRouter([
       },
       { path: 'privacy',
         element: <Privacy />
+      },
+      { path: 'settings',
+        element: <SettingsPage />
       },
       {
         path: 'test',

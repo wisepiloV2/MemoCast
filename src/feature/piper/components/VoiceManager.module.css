@@ -1,7 +1,4 @@
 .container {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--modal-radius);
   padding: 1.5rem;
   max-width: 600px;
   width: 100%;

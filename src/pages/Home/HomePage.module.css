@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin: 1rem;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -21,8 +21,14 @@
   margin: 0;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .searchContainer {
-  margin-bottom: 2.5rem;
+  margin: 1rem;
   max-width: 400px; 
 }
 
@@ -31,7 +37,7 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
   gap: 1.5rem;
   justify-content: center; 
-  margin: 0 auto;
+  margin: 2rem auto;
   max-width: 1050px; 
 }
 
