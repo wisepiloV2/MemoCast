@@ -80,3 +80,42 @@
   max-width: 768px;
   margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+  .settingsContainer {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%; 
+    box-sizing: border-box;
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--modal-border);
+    gap: 16px; 
+  }
+
+  .navMenu {
+    flex-direction: row; 
+    overflow-x: auto; 
+    padding-bottom: 4px; 
+    scrollbar-width: none; 
+  }
+
+  .navMenu::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .navButton {
+    width: auto; 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    padding: 8px 16px; 
+  }
+
+  .mainContent {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px; 
+  }
+}

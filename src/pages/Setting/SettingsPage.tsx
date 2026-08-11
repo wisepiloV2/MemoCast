@@ -3,6 +3,7 @@ import { VoiceManager } from '../../feature/piper';
 import { Button } from '../../component/Button/Button';
 import styles from './SettingsPage.module.css'
 import { useNavigate } from 'react-router-dom';
+import { MainLayout } from '../../component/layout/MainLayout';
 
 type SettingsTab = 'voice manager';
 
@@ -37,6 +38,7 @@ export function SettingsPage() {
   );
 
   return (
+    <MainLayout>
     <div className={styles.settingsContainer}>
       <aside className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
@@ -56,11 +58,12 @@ export function SettingsPage() {
         </nav>
       </aside>
 
-      <main className={styles.mainContent}>
+      <div className={styles.mainContent}>
         <div className={styles.contentWrapper}>
           {activeTab === 'voice manager' && <VoiceManager />}
         </div>
-      </main>
+      </div>
     </div>
+    </MainLayout>
   );
 }
