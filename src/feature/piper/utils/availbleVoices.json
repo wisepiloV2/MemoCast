@@ -1,0 +1,14 @@
+{
+  "es-AR": {
+    "name": "Spanish (Argentina)",
+    "voiceId": "es_AR-daniela-high",
+    "modelUrl": "https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_AR/daniela/high/es_AR-daniela-high.onnx?",
+    "configUrl": "https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_AR/daniela/high/es_AR-daniela-high.onnx.json?"
+  },
+  "en-US": {
+    "name": "English (United States)",
+    "voiceId": "en_US-lessac-high",
+    "modelUrl": "https://huggingface.co/Trelis/piper-en-us-lessac-high/resolve/main/model.onnx?",
+    "configUrl": "https://huggingface.co/Trelis/piper-en-us-lessac-high/resolve/main/model.onnx.json?"
+  }
+}

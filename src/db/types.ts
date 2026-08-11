@@ -6,13 +6,18 @@ export interface Document {
     createdAt: Date;
 }
 
-export interface AudioFile {
-    id?: number;
-    documentId: number;
-    audioBlob: Blob;
-}
-
 export interface Category {
     id?: number;
     name: string;
+}
+
+export interface VoiceMeta {
+    id: string;
+    name: string;
+}
+
+export interface VoiceData {
+    id: string;
+    onnxData: ArrayBuffer;
+    configData: any;
 }
