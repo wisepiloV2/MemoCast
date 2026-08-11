@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@realtimex/piper-tts-web": "^1.1.1",
     "dexie": "^4.4.4",
     "dexie-react-hooks": "^4.4.0",
+    "onnxruntime-web": "^1.27.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-hook-form": "^7.84.0",

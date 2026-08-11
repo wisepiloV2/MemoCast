@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { ErrorPage, HomePage, EditorPage, DocumentPage, About, Privacy } from '../pages';
+import PiperReader from '../feature/document/components/PiperReader';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       },
       { path: 'privacy',
         element: <Privacy />
+      },
+      {
+        path: 'test',
+        element: <PiperReader />
       }
     ],
   }
