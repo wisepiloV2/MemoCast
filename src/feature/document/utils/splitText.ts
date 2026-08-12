@@ -1,6 +1,6 @@
 export function splitText(
   text: string,
-  maxLength = 500
+  maxLength = 500,
 ): string[] {
   const sentences =
     text.match(/[^.!?]+[.!?]+/g) ?? [text];

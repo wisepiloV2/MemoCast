@@ -1,5 +1,5 @@
-import { useLiveQuery } from "dexie-react-hooks";
-import { documentService } from "../service/documentService";
+import { useLiveQuery } from 'dexie-react-hooks';
+import { documentService } from '../service/documentService';
 
 export const useDocumentById = (id: number | undefined) => {
   const document = useLiveQuery(
@@ -10,7 +10,7 @@ export const useDocumentById = (id: number | undefined) => {
       
       return data ?? null;
     },
-    [id]
+    [id],
   );
 
   const isLoading = Boolean(id) && document === undefined;

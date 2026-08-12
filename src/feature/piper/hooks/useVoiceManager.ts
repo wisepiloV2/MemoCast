@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { voiceService } from "../service/voiceService";
-import { useDownloadVoice } from "./useDownloadVoice";
-import type { VoiceMeta } from "../../../db/types";
-import voicesData from "../utils/availbleVoices.json";
+import { useEffect, useState } from 'react';
+import { voiceService } from '../service/voiceService';
+import { useDownloadVoice } from './useDownloadVoice';
+import type { VoiceMeta } from '../../../db/types';
+import voicesData from '../utils/availbleVoices.json';
 
-type VoiceCatalog = Record<string,
+type VoiceCatalog = Record<
+    string,
     {
         name: string;
         voiceId: string;
@@ -14,68 +15,74 @@ type VoiceCatalog = Record<string,
 const catalog = voicesData as VoiceCatalog;
 
 export function useVoiceManager() {
-    const [installedVoices, setInstalledVoices] = useState<VoiceMeta[]>([]);
-    const [selectedVoiceId, setSelectedVoiceId] = useState<string | null>(null);
+  const [installedVoices, setInstalledVoices] = useState<VoiceMeta[]>([]);
+  const [selectedVoiceId, setSelectedVoiceId] = useState<string | null>(null);
 
-    const {
-        downloadVoice,
-        deleteVoice,
-        isDownloading,
-    } = useDownloadVoice();
+  const {
+    downloadVoice,
+    deleteVoice,
+    isDownloading,
+  } = useDownloadVoice();
 
-    const loadInstalled = async () => {
-        const installed = await voiceService.getAllMeta();
-        setInstalledVoices(installed);
+  const loadInstalled = async () => {
+    const installed = await voiceService.getAllMeta();
 
-        if (installed.length > 0 && !selectedVoiceId) {
-            setSelectedVoiceId(installed[0].id);
-        }
-    };
+    setInstalledVoices(installed);
 
-    useEffect(() => {
-        loadInstalled();
-    }, []);
+    if (installed.length > 0 && !selectedVoiceId) {
+      setSelectedVoiceId(installed[0].id);
+    }
+  };
 
-    const handleInstall = async (catalogId: string) => {
-        const voiceConfig = catalog[catalogId];
+  useEffect(() => {
+    loadInstalled();
+  }, []);
 
-        if (!voiceConfig) {
-            return;
-        }
+  const handleInstall = async (catalogId: string) => {
+    const voiceConfig = catalog[catalogId];
 
-        const success = await downloadVoice(
-            voiceConfig.voiceId,
-            voiceConfig.name
-        );
+    if (!voiceConfig) {
+      return;
+    }
 
-        if (success) {
-            await loadInstalled();
-        }
-    };
+    const success = await downloadVoice(
+      voiceConfig.voiceId,
+      voiceConfig.name,
+    );
 
-    const handleDelete = async (voiceId: string) => {
-        const success = await deleteVoice(voiceId);
+    if (success) {
+      await loadInstalled();
+    }
+  };
 
-        if (success) {
-            await loadInstalled();
-            if (selectedVoiceId === voiceId) {
-                setSelectedVoiceId(null);
-            }
-        }
-    };
+  const handleDelete = async (voiceId: string) => {
+    const success = await deleteVoice(voiceId);
 
-    const availableVoices = Object.entries(catalog)
-        .filter(([_, voiceConfig]) => !installedVoices
-            .some((installed) => installed.id === voiceConfig.voiceId)
-        );
+    if (success) {
+      await loadInstalled();
 
-    return {
-        installedVoices,
-        availableVoices,
-        selectedVoiceId,
-        setSelectedVoiceId,
-        handleInstall,
-        handleDelete,
-        isDownloading,
-    };
+      if (selectedVoiceId === voiceId) {
+        setSelectedVoiceId(null);
+      }
+    }
+  };
+
+  const availableVoices = Object.entries(catalog)
+    .filter(
+      ([_, voiceConfig]) =>
+        !installedVoices.some(
+          (installed) =>
+            installed.id === voiceConfig.voiceId,
+        ),
+    );
+
+  return {
+    installedVoices,
+    availableVoices,
+    selectedVoiceId,
+    setSelectedVoiceId,
+    handleInstall,
+    handleDelete,
+    isDownloading,
+  };
 }

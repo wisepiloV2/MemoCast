@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useSearchCategory } from "./useSearchCategory";
-import { useCategoryMutations } from "./useCategoryMutations";
+import { useState, useEffect } from 'react';
+import { useSearchCategory } from './useSearchCategory';
+import { useCategoryMutations } from './useCategoryMutations';
 
 interface UseCategorySelectedProps {
   value: string;
@@ -8,7 +8,13 @@ interface UseCategorySelectedProps {
 }
 
 export function useCategorySelected({ value, onChange }: UseCategorySelectedProps) {
-  const [query, setQuery] = useState(value || "");
+  const [query, setQuery] = useState(value || '');
+  const [prevValue, setPrevValue] = useState(value);
+  if (value !== prevValue) {
+    setPrevValue(value);
+    setQuery(value || '');
+  }
+
   const [isOpen, setIsOpen] = useState(false);
   const { results, searchCategory, isLoading } = useSearchCategory();
   const { createCategory, isSaving } = useCategoryMutations();
@@ -17,11 +23,7 @@ export function useCategorySelected({ value, onChange }: UseCategorySelectedProp
     if (isOpen) {
       searchCategory(query);
     }
-  }, [query, isOpen]);
-
-  useEffect(() => {
-    setQuery(value || "");
-  }, [value]);
+  }, [query, isOpen, searchCategory]); 
 
   const handleSelect = (categoryName: string) => {
     setQuery(categoryName);
@@ -35,12 +37,12 @@ export function useCategorySelected({ value, onChange }: UseCategorySelectedProp
       await createCategory(query.trim());
       handleSelect(query.trim());
     } catch (error) {
-      console.error("Hubo un error al crear la categoría", error);
+      console.error('There was an error creating the category', error);
     }
   };
 
   const exactMatchExists = results.some(
-    (cat) => cat.name.toLowerCase() === query.trim().toLowerCase()
+    (cat) => cat.name.toLowerCase() === query.trim().toLowerCase(),
   );
 
   return {

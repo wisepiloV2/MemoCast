@@ -1,2 +1,2 @@
-import { CategorySelected } from "./components/CategorySelected";
-export {CategorySelected}
+import { CategorySelected } from './components/CategorySelected';
+export {CategorySelected};

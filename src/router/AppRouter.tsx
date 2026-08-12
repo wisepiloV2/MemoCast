@@ -4,7 +4,7 @@ import { VoiceManager } from '../feature/piper/components/VoiceManager';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Outlet />, 
     errorElement: 
       <ErrorPage 
@@ -14,38 +14,38 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />
+        element: <HomePage />,
       },
       { 
         path: 'editor', 
-        element: <EditorPage /> 
+        element: <EditorPage />, 
       }, 
       { 
         path: 'editor/:id', 
-        element: <EditorPage /> 
+        element: <EditorPage />, 
       }, 
       {
         path: 'document/:id',
-        element: <DocumentPage />
+        element: <DocumentPage />,
       },
       {
         path: 'about',
-        element: <About />
+        element: <About />,
       },
       { path: 'privacy',
-        element: <Privacy />
+        element: <Privacy />,
       },
       { path: 'settings',
-        element: <SettingsPage />
+        element: <SettingsPage />,
       },
       {
         path: 'test',
-        element: <VoiceManager />
-      }
+        element: <VoiceManager />,
+      },
     ],
-  }
+  },
 ]);
 
 export const AppRouter = () => {
-    return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 };

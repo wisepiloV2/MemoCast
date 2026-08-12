@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,6 +13,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     // Excluimos la librería para que Vite no la rompa al compilarla en desarrollo
-    exclude: ['@mintplex-labs/piper-tts-web']
-  }
-})
+    exclude: ['@mintplex-labs/piper-tts-web'],
+  },
+});

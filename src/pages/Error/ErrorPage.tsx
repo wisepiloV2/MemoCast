@@ -15,7 +15,7 @@ export function ErrorPage({ title, subtitle }: ErrorPageProps) {
       <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.subtitle}>{subtitle}</p>
-        <Button variant='primary' onClick={() => navigate("/")}>Go home</Button>
+        <Button variant='primary' onClick={() => navigate('/')}>Go home</Button>
       </div>
     </MainLayout>
   );

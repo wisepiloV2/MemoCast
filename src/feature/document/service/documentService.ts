@@ -1,5 +1,5 @@
-import { db } from "../../../db/dbDexie";
-import { type Document } from "../../../db/types";
+import { db } from '../../../db/dbDexie';
+import { type Document } from '../../../db/types';
 
 export const documentService = {
   getById: async (id: number) => {
@@ -8,21 +8,21 @@ export const documentService = {
 
   getAllByCategory: async (category: string) => {
     return await db.documents
-      .where("category")
+      .where('category')
       .equals(category)
       .toArray();
   },
   
   create: async (documentData: Document) => {
-    if (!documentData.title.trim()) throw new Error("El título del documento es obligatorio");
-    if (!documentData.category.trim()) throw new Error("El documento debe tener una categoría");
+    if (!documentData.title.trim()) throw new Error('El título del documento es obligatorio');
+    if (!documentData.category.trim()) throw new Error('El documento debe tener una categoría');
     
     return await db.documents.add(documentData);
   },
   
   update: async (id: number, documentData: Partial<Document>) => {
     if (documentData.title !== undefined && !documentData.title.trim()) {
-      throw new Error("El título no puede quedar vacío");
+      throw new Error('El título no puede quedar vacío');
     }
     
     return await db.documents.update(id, documentData);
@@ -46,12 +46,12 @@ export const documentService = {
   searchWithinCategory: async (category: string, searchTerm: string) => {
     const term = searchTerm.trim().toLowerCase();
     
-    const categoryCollection = db.documents.where("category").equals(category);
+    const categoryCollection = db.documents.where('category').equals(category);
 
     if (!term) return await categoryCollection.toArray();
 
     return await categoryCollection
       .filter((doc) => doc.title.toLowerCase().includes(term))
       .toArray();
-  }
+  },
 };

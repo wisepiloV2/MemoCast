@@ -1,6 +1,6 @@
-import { SearchInput } from "../../../component/SearchInput/SearchInput";
-import { useCategorySelected } from "../hook/useCategorySelected";
-import styles from "./CategorySelected.module.css";
+import { SearchInput } from '../../../component/SearchInput/SearchInput';
+import { useCategorySelected } from '../hook/useCategorySelected';
+import styles from './CategorySelected.module.css';
 
 interface CategorySelectedProps {
   value: string;
@@ -48,7 +48,7 @@ export function CategorySelected({ value, onChange }: CategorySelectedProps) {
             </li>
           ))}
 
-          {!isLoading && query.trim() !== "" && !exactMatchExists && (
+          {!isLoading && query.trim() !== '' && !exactMatchExists && (
             <li 
               onClick={() => {
                 handleCreateNew();
@@ -56,7 +56,7 @@ export function CategorySelected({ value, onChange }: CategorySelectedProps) {
               }}
               className={`${styles.item} ${styles.itemCreate}`}
             >
-              {isSaving ? "Creating..." : `+ Create new category "${query}"`}
+              {isSaving ? 'Creating...' : `+ Create new category "${query}"`}
             </li>
           )}
         </ul>
