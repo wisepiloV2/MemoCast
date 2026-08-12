@@ -1,0 +1,52 @@
+.container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--modal-radius);
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 8px 24px var(--modal-shadow-dark);
+  z-index: 100;
+  animation: slideUp 0.4s ease-out;
+}
+.select {
+  padding: var(--btn-py-sm) var(--btn-px-sm);
+  border-radius: var(--btn-radius);
+  background-color: var(--btn-secondary-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--btn-secondary-border);
+  font-size: var(--text-sm);
+  outline: none;
+  transition: var(--btn-transition);
+  cursor: pointer;
+}
+
+.select:hover,
+.select:focus {
+  border-color: var(--btn-secondary-hover-border);
+  background-color: var(--btn-secondary-hover-bg);
+}
+
+.statusText {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.errorText {
+  font-size: var(--text-xs);
+  color: var(--accent-error);
+  white-space: nowrap;
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}

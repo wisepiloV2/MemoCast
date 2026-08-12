@@ -3,7 +3,8 @@ import { MainLayout } from '../../component/layout/MainLayout';
 import { useDocumentById } from '../../feature/document';
 import { DocumentContent } from '../../feature/document';
 import { Button } from '../../component/Button/Button';
-import styles from './DocumentPage.module.css'; 
+import styles from './DocumentPage.module.css';
+import { VoiceReproducer } from '../../feature/piper';
 
 export function DocumentPage() {
     const { id } = useParams(); 
@@ -48,6 +49,8 @@ export function DocumentPage() {
                         htmlText={document.htmlText}
                     />
                 </section>
+
+                <VoiceReproducer text={document.htmlText}/>
             </div>
         );
     };

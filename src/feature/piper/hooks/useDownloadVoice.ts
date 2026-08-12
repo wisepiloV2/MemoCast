@@ -1,36 +1,28 @@
-import { useState } from 'react';
-import { voiceService } from '../service/voiceService';
+import { useState } from "react";
+import { download, remove } from "@realtimex/piper-tts-web";
+import { voiceService } from "../service/voiceService";
 
 export const useDownloadVoice = () => {
-    const [isDownloading, setIsDownloading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [isDownloading, setIsDownloading] =
+        useState(false);
 
-    const downloadVoice = async (id: string, name: string, onnxUrl: string, jsonUrl: string) => {
+    const [error, setError] =
+        useState<string | null>(null);
+
+    const downloadVoice = async (
+        id: string,
+        name: string
+    ) => {
         setIsDownloading(true);
         setError(null);
 
         try {
-            const [onnxResponse, jsonResponse] = await Promise.all([
-                fetch(onnxUrl),
-                fetch(jsonUrl)
-            ]);
-
-            if (!onnxResponse.ok || !jsonResponse.ok) {
-                throw new Error("Error downloading files from the network");
-            }
-
-            const meta = { id, name };
-            const data = { 
-                id, 
-                onnxData: await onnxResponse.arrayBuffer(), 
-                configData: await jsonResponse.json() 
-            };
-
-            await voiceService.save(meta, data);
-
-            return true; 
+            await download(id);
+            await voiceService.save({ id, name });
+            return true;
         } catch (err) {
-            const errorMessage = err instanceof Error ? err.message : "Unknown error";
+            console.error("Error downloading voice:", err);
+            const errorMessage = err instanceof Error ? err.message : "Error downloading voice:";
             setError(errorMessage);
             return false;
         } finally {
@@ -38,9 +30,24 @@ export const useDownloadVoice = () => {
         }
     };
 
+    const deleteVoice = async (id: string) => {
+        try {
+            await remove(id);
+            await voiceService.delete(id);
+            return true;
+        } catch (err) {
+            console.error("Error deleting voice:", err);
+            const errorMessage = err instanceof Error ? err.message : "Error deleting voice";
+            setError(errorMessage);
+            return false;
+        }
+    };
+
     return {
         downloadVoice,
+        deleteVoice,
         isDownloading,
-        error
+        error,
     };
 };
+

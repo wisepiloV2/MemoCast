@@ -1,2 +1,3 @@
 import { VoiceManager } from "./components/VoiceManager";
-export { VoiceManager };
+import { VoiceReproducer } from "./components/VoiceReproducer";
+export { VoiceManager, VoiceReproducer };

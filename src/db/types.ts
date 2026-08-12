@@ -1,5 +1,5 @@
 export interface Document {
-    id?: number; 
+    id?: number;
     title: string;
     category: string;
     htmlText: string;
@@ -14,10 +14,4 @@ export interface Category {
 export interface VoiceMeta {
     id: string;
     name: string;
-}
-
-export interface VoiceData {
-    id: string;
-    onnxData: ArrayBuffer;
-    configData: any;
 }

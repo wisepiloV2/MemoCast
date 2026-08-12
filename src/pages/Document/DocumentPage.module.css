@@ -1,7 +1,7 @@
 .documentPage {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 8rem 1rem; 
     min-height: 100vh; 
     color: var(--text-primary);
 }
