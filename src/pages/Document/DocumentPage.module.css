@@ -24,7 +24,6 @@
     justify-content: center;
     color: var(--text-secondary);
     font-size: var(--text-lg);
-    
     animation: pulse 2s infinite ease-in-out;
 }
 

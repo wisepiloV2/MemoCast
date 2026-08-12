@@ -15,7 +15,6 @@
   box-shadow: 0 8px 24px var(--modal-shadow-dark);
   z-index: 100;
   animation: slideUp 0.4s ease-out;
-  width: 100%;
 }
 .select {
   padding: var(--btn-py-sm) var(--btn-px-sm);
@@ -50,4 +49,13 @@
 @keyframes slideUp {
   from { transform: translate(-50%, 100%); opacity: 0; }
   to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px;
+    gap: 2px;
+  }
 }
