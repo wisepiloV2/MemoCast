@@ -1,19 +1,34 @@
-import { useVoiceManager } from '../hooks/useVoiceManager';
 import { Button } from '../../../component/Button/Button';
 import styles from './VoiceManager.module.css';
+import { useTtsMutations } from '../hooks/useTtsMutations';
 
 export const VoiceManager = () => {
   const { 
-    installedVoices, 
+    isProcessing,
     availableVoices, 
-    handleInstall, 
-    handleDelete, 
-    isDownloading, 
-  } = useVoiceManager();
+    downloadById,
+    deleteById,
+    deleteAll 
+  } = useTtsMutations();
+
+  const installedVoices = availableVoices.filter(voice => voice.isInstalled);
+  const notInstalledVoices = availableVoices.filter(voice => !voice.isInstalled);
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Voice Manager (Piper)</h2>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Voice Manager (Piper)</h2>
+        
+        {installedVoices.length > 0 && (
+          <Button 
+            onClick={() => deleteAll()} 
+            disabled={isProcessing} 
+            variant="danger"
+          >
+            Delete All
+          </Button>
+        )}
+      </div>
 
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>Installed</h3>
@@ -23,14 +38,16 @@ export const VoiceManager = () => {
           <ul className={styles.list}>
             {installedVoices.map((voice) => (
               <li key={voice.id} className={styles.listItem}>
-                <span className={styles.voiceName}>{voice.name}</span>
+                <span className={styles.voiceName}>
+                  {voice.name} 
+                </span>
                 <div className={styles.actions}>
                   <Button 
-                    onClick={() => handleDelete(voice.id)}
-                    disabled={isDownloading}
+                    onClick={() => deleteById(voice.id)}
+                    disabled={isProcessing}
                     variant="danger"
                   >
-                                        Delete
+                    Delete
                   </Button>
                 </div>
               </li>
@@ -41,19 +58,21 @@ export const VoiceManager = () => {
 
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>Available for download</h3>
-        {availableVoices.length === 0 ? (
+        {notInstalledVoices.length === 0 ? (
           <p className={styles.emptyState}>All available voices have been downloaded.</p>
         ) : (
           <ul className={styles.list}>
-            {availableVoices.map(([id, voiceConfig]) => (
-              <li key={id} className={styles.listItem}>
-                <span className={styles.voiceName}>{voiceConfig.name}</span>
+            {notInstalledVoices.map((voice) => (
+              <li key={voice.id} className={styles.listItem}>
+                <span className={styles.voiceName}>
+                  {voice.name}
+                </span>
                 <div className={styles.actions}>
                   <Button 
-                    onClick={() => handleInstall(id)}
-                    disabled={isDownloading}
+                    onClick={() => downloadById(voice.id)}
+                    disabled={isProcessing}
                   >
-                    {isDownloading ? 'Downloading...' : 'Download'}
+                    {isProcessing ? 'Processing...' : 'Download'}
                   </Button>
                 </div>
               </li>

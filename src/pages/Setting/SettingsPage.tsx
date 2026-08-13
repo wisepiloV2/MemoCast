@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { VoiceManager } from '../../feature/piper';
 import { Button } from '../../component/Button/Button';
 import styles from './SettingsPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import { MainLayout } from '../../component/layout/MainLayout';
+import { VoiceManager } from '../../feature/piperTts';
 
 type SettingsTab = 'voice manager';
 
@@ -26,10 +26,39 @@ const IconBack = () => (
   </svg>
 );
 
-const IconVoiceDownload = () => (
-  <svg className={styles.icon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2v6m0 0l-3-3m3 3l3-3" />
+const IconVoiceManager = () => (
+  <svg
+    className={styles.icon}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 3a3 3 0 00-3 3v5a3 3 0 006 0V6a3 3 0 00-3-3z"
+    />
+
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M6 10v1a6 6 0 0012 0v-1"
+    />
+
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 17v4m-3 0h6"
+    />
+
+    <path
+      strokeLinecap="round"
+      strokeWidth={2}
+      d="M19 7.5a8 8 0 010 5M21 5a11 11 0 010 10"
+    />
   </svg>
 );
 
@@ -53,7 +82,7 @@ export function SettingsPage() {
               onClick={() => setActiveTab('voice manager')}
               className={`${styles.navButton} ${activeTab === 'voice manager' ? styles.active : ''}`}
             >
-              <IconVoiceDownload /> Voice manager
+              <IconVoiceManager /> Voice manager
             </Button>
           </nav>
         </aside>

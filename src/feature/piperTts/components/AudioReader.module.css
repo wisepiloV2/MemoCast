@@ -1,0 +1,35 @@
+.floatingContainer {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerContainer {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.playPauseContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+}
+
+.loadingText {
+  font-size: var(--text-xs);
+  font-weight: bold;
+}

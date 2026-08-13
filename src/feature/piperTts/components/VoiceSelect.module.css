@@ -1,0 +1,33 @@
+.selectContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.select {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--btn-radius);
+  padding: 0.5rem 1rem;
+  font-size: var(--text-base);
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--btn-transition);
+}
+
+.select:hover, .select:focus {
+  border-color: var(--btn-primary-border);
+}
+
+.select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
