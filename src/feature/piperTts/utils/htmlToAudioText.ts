@@ -17,7 +17,7 @@ export function htmlToAudioChunks(html: string): string[] {
   text = text.replace(/<\/(p|div|h[1-6]|ul|ol)>/gi, `\n\n${CHUNK_MARKER}`);
   
   // 2. Manejar saltos de línea explícitos
-  text = text.replace(/<br\s*[\/]?>/gi, '\n');
+  text = text.replace(/<br\s*\/?>/gi, '\n');
 
   // 3. Formatear listas (toda la lista se mantendrá en un solo chunk)
   text = text.replace(/<li[^>]*>/gi, '\n• ');
@@ -28,11 +28,11 @@ export function htmlToAudioChunks(html: string): string[] {
 
   // 5. Decodificar entidades HTML neutrales al idioma
   text = text.replace(/&nbsp;/g, ' ')
-             .replace(/&amp;/g, '&') 
-             .replace(/&lt;/g, '<')
-             .replace(/&gt;/g, '>')
-             .replace(/&quot;/g, '"')
-             .replace(/&#39;/g, "'");
+    .replace(/&amp;/g, '&') 
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, '\'');
 
   // 6. Dividir el texto gigante en bloques usando el marcador HTML
   const blockChunks = text.split(CHUNK_MARKER);

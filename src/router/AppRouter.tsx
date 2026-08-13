@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { ErrorPage, HomePage, EditorPage, DocumentPage, About, Privacy, SettingsPage } from '../pages';
-import { Testing } from '../testing';
 
 const router = createBrowserRouter([
   {
@@ -37,10 +36,6 @@ const router = createBrowserRouter([
       },
       { path: 'settings',
         element: <SettingsPage />,
-      },
-      {
-        path: 'test',
-        element: <Testing />,
       },
     ],
   },

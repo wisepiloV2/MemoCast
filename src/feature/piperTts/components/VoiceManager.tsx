@@ -8,7 +8,7 @@ export const VoiceManager = () => {
     availableVoices, 
     downloadById,
     deleteById,
-    deleteAll 
+    deleteAll, 
   } = useTtsMutations();
 
   const installedVoices = availableVoices.filter(voice => voice.isInstalled);

@@ -43,7 +43,7 @@ export function AudioReader({ htmlContent, voiceId } : AudioReaderProps) {
     playPrevious, 
     isPlaying, 
     isWaiting,  
-    totalChunks 
+    totalChunks, 
   } = useTtsPlayer(generateAudioChunk);
 
   const handleStartReading = () => {
@@ -55,7 +55,7 @@ export function AudioReader({ htmlContent, voiceId } : AudioReaderProps) {
     <div className={styles.floatingContainer}>
       {totalChunks === 0 ? (
         <Button onClick={handleStartReading}>
-            <IconPlay /> Play Audio
+          <IconPlay /> Play Audio
         </Button>
       ) : (
         <div className={styles.playerContainer}>

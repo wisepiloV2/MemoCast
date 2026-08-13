@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MainLayout } from '../../component/layout/MainLayout';
 import { useDocumentById, DocumentContent } from '../../feature/document';
 import { Button } from '../../component/Button/Button';
@@ -15,16 +15,12 @@ export function DocumentPage() {
   const [selectedVoice, setSelectedVoice] = useState<string>('');
   const { installedVoices } = useTtsMutations();
 
+  const activeVoice = selectedVoice || (installedVoices.length > 0 ? installedVoices[0].id : '');
+
   const voiceOptions = installedVoices.map(voice => ({
     value: voice.id,
-    label: voice.description
+    label: voice.description,
   }));
-
-  useEffect(() => {
-    if (!selectedVoice && installedVoices.length > 0) {
-      setSelectedVoice(installedVoices[0].id);
-    }
-  }, [installedVoices, selectedVoice]);
 
   const renderContent = () => {
     if (isLoading) {
@@ -56,7 +52,7 @@ export function DocumentPage() {
 
           <VoiceSelect
             options={voiceOptions}
-            value={selectedVoice}
+            value={activeVoice}
             onChange={setSelectedVoice}
           />
         </header>
@@ -69,8 +65,8 @@ export function DocumentPage() {
           />
         </section>
 
-        {selectedVoice && (
-          <AudioReader htmlContent={document.htmlText} voiceId={selectedVoice} />
+        {activeVoice && (
+          <AudioReader htmlContent={document.htmlText} voiceId={activeVoice} />
         )}
       </div>
     );
