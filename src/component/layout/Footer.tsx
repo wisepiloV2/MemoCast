@@ -11,7 +11,7 @@ export default function Footer() {
           <div className={styles.identity}>
             <div className={styles.brand}>
               <span className={styles.logoText}>MemoCast</span>
-              <span className={styles.versionBadge}>v1.1</span>
+              <span className={styles.versionBadge}>v1.2</span>
             </div>
           </div>
 
