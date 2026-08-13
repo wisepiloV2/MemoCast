@@ -1,8 +1,5 @@
 import Dexie, { type Table } from 'dexie';
-import {
-  type Document,
-  type Category,
-} from './types';
+import { type Document, type Category } from './types';
 
 export class dbDexie extends Dexie {
   documents!: Table<Document, number>;

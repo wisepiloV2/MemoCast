@@ -12,25 +12,25 @@ export function About() {
         <h1 className={styles.title}>About MemoCast</h1>
                 
         <p className={styles.intro}>
-                    MemoCast is a web-based study organizer designed to be fast, free, and 
-                    absolutely private. It was born from the need for a tool with no storage 
-                    limits or paywalls, adapted to a study workflow based on reading, 
-                    listening, and summarizing.
+          MemoCast is a web-based study organizer designed to be fast, free, and 
+          absolutely private. It was born from the need for a tool with no storage 
+          limits or paywalls, adapted to a study workflow based on reading, 
+          listening, and summarizing.
         </p>
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>The meaning of MemoCast</h2>
           <p className={styles.paragraph}>
-                        The project's name defines its future vision:
+            The project's name defines its future vision:
           </p>
           <ul className={styles.list}>
             <li className={styles.listItem}>
               <span className={styles.highlight}>Memo:</span> Represents notes, 
-                            reading, and the structured organization of texts.
+                reading, and the structured organization of texts.
             </li>
             <li className={styles.listItem}>
               <span className={styles.highlight}>Cast:</span> Refers to audio, 
-                            recognizing that listening is one of the most effective ways to retain information.
+                recognizing that listening is one of the most effective ways to retain information.
             </li>
           </ul>
         </section>
@@ -38,13 +38,13 @@ export function About() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Total privacy by design (Local-First)</h2>
           <p className={styles.paragraph}>
-                        Most note-taking applications store your information in the cloud. 
-                        MemoCast works differently.
+            Most note-taking applications store your information in the cloud. 
+            MemoCast works differently.
           </p>
           <p className={styles.paragraph}>
-                        The entire application is built on <span className={styles.highlight}>IndexedDB</span> technology. 
-                        This means that all the documents, categories, and texts you enter are saved 
-                        solely locally on your browser and device.
+            The entire application is built on <span className={styles.highlight}>IndexedDB</span> technology. 
+            This means that all the documents, categories, and texts you enter are saved 
+            solely locally on your browser and device.
           </p>
           <ul className={styles.list}>
             <li className={styles.listItem}>There are no external servers analyzing your notes.</li>
@@ -57,13 +57,13 @@ export function About() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>The future of the project (Roadmap)</h2>
           <p className={styles.paragraph}>
-                        Currently, MemoCast is in its first phase (MVP), allowing the creation 
-                        of texts and their organization through categories. However, the project is 
-                        constantly evolving.
+            Currently, MemoCast is in its first phase (MVP), allowing the creation 
+            of texts and their organization through categories. However, the project is 
+            constantly evolving.
           </p>
           <p className={styles.paragraph}>
-                        Upcoming updates are focused on turning MemoCast into a comprehensive 
-                        study platform, incorporating:
+            Upcoming updates are focused on turning MemoCast into a comprehensive 
+            study platform, incorporating:
           </p>
           <ul className={styles.list}>
             <li className={styles.listItem}>Integration and playback of audio notes.</li>
@@ -75,9 +75,9 @@ export function About() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Open Source and Transparency</h2>
           <p className={styles.paragraph}>
-                        MemoCast is an Open Source project. We believe in technical transparency 
-                        and collaborative development. Any user with technical knowledge can 
-                        visit our GitHub repository to:
+            MemoCast is an Open Source project. We believe in technical transparency 
+            and collaborative development. Any user with technical knowledge can 
+            visit our GitHub repository to:
           </p>
           <ul className={styles.list}>
             <li className={styles.listItem}>Audit the code and verify that privacy policies are strictly followed.</li>

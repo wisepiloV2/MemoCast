@@ -31,8 +31,8 @@ export function DocumentCard({ id, title, category, onDelete }: DocumentCardProp
     <>
       <div className={styles.documentCardWrapper}>
         <Link to={`/document/${id}`} className={styles.documentCardLink}>
-          <span className={styles.textViewCategory}>{category || 'Uncategorized'}</span>
-          <h3 className={styles.docCardTitle}>{title || 'Untitled Document'}</h3>
+          <span className={styles.textViewCategory}>{category}</span>
+          <h3 className={styles.docCardTitle}>{title}</h3>
         </Link>
 
         <Button variant="ghost" className={styles.docCardOptionsBtn} onClick={openModal}>
@@ -46,11 +46,11 @@ export function DocumentCard({ id, title, category, onDelete }: DocumentCardProp
             <h2 className={styles.optionsModalTitle}>Document Options</h2>
             <div className={styles.optionsModalActions}>
               <Button variant="primary" onClick={() => navigate(`/editor/${id}`)}>
-                                Edit Document
+                Edit Document
               </Button>
                             
               <Button variant="danger" onClick={() => setIsConfirmingDelete(true)}>
-                                Delete Document
+                Delete Document
               </Button>
             </div>
           </>
@@ -58,15 +58,15 @@ export function DocumentCard({ id, title, category, onDelete }: DocumentCardProp
           <>
             <h2 className={styles.optionsModalTitle}>Delete Document?</h2>
             <p className={styles.confirmText}>
-                            Are you sure you want to delete <strong>"{title}"</strong>? This action cannot be undone.
+              Are you sure you want to delete <strong>"{title}"</strong>? This action cannot be undone.
             </p>
             <div className={styles.optionsModalActions}>
               <Button variant="danger" onClick={handleConfirmDelete}>
-                                Yes, delete it
+                Yes, delete it
               </Button>
                             
               <Button variant="secondary" onClick={() => setIsConfirmingDelete(false)}>
-                                Cancel
+                Cancel
               </Button>
             </div>
           </>

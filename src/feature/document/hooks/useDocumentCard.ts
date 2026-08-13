@@ -8,7 +8,6 @@ export function useDocumentCard() {
     
   const closeModal = () => {
     setIsModalOpen(false);
-    // Esperamos a que termine la animación de cierre para resetear el estado
     setTimeout(() => setIsConfirmingDelete(false), 200); 
   };
 

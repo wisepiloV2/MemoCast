@@ -14,15 +14,15 @@ export const documentService = {
   },
   
   create: async (documentData: Document) => {
-    if (!documentData.title.trim()) throw new Error('El título del documento es obligatorio');
-    if (!documentData.category.trim()) throw new Error('El documento debe tener una categoría');
+    if (!documentData.title.trim()) throw new Error('Document title is required');
+    if (!documentData.category.trim()) throw new Error('The document must have a category');
     
     return await db.documents.add(documentData);
   },
   
   update: async (id: number, documentData: Partial<Document>) => {
     if (documentData.title !== undefined && !documentData.title.trim()) {
-      throw new Error('El título no puede quedar vacío');
+      throw new Error('Title cannot be empty');
     }
     
     return await db.documents.update(id, documentData);
@@ -43,15 +43,16 @@ export const documentService = {
       .toArray();
   },
 
-  searchWithinCategory: async (category: string, searchTerm: string) => {
+  searchWithCategory: async (category: string, searchTerm: string, limit : number) => {
     const term = searchTerm.trim().toLowerCase();
     
     const categoryCollection = db.documents.where('category').equals(category);
 
-    if (!term) return await categoryCollection.toArray();
+    if (!term) return await categoryCollection.limit(limit).toArray();
 
     return await categoryCollection
       .filter((doc) => doc.title.toLowerCase().includes(term))
+      .limit(limit)
       .toArray();
   },
 };

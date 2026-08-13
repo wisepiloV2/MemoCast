@@ -62,6 +62,9 @@ export function HomePage() {
           </p>
         </div>
         <div className={styles.headerActions}>
+          <Button variant='primary' onClick={() => navigate('/categories')}>
+            Categories
+          </Button>
           <Button variant='primary' onClick={() => navigate('/editor')}>
             + New Document
           </Button>

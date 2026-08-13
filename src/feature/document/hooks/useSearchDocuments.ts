@@ -16,10 +16,10 @@ export function useSearchDocuments(){
     }
   }, []); 
 
-  const searchDocumentInCategory = useCallback(async (category: string, searchTerm: string) => {
+  const searchDocumentInCategory = useCallback(async (category: string, searchTerm: string, limit: number = 20) => {
     setIsLoading(true);
     try {
-      const data = await documentService.searchWithinCategory(category, searchTerm);
+      const data = await documentService.searchWithCategory(category, searchTerm, limit);
       setResults(data);
     } finally {
       setIsLoading(false);

@@ -43,7 +43,6 @@
   flex-grow: 1 !important;
 }
 
-/* --- BARRA DE TAREAS --- */
 .editorWrapper :global(.rsw-toolbar) {
   display: flex !important;
   flex-wrap: nowrap !important;

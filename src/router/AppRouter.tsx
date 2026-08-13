@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import { ErrorPage, HomePage, EditorPage, DocumentPage, About, Privacy, SettingsPage } from '../pages';
+import { ErrorPage, HomePage, EditorPage, DocumentPage, About, Privacy, SettingsPage, CategoriesPage, DocumentsPage } from '../pages';
 
 const router = createBrowserRouter([
   {
@@ -7,8 +7,8 @@ const router = createBrowserRouter([
     element: <Outlet />, 
     errorElement: 
       <ErrorPage 
-        title='Error 404. Pagina no encontrada' 
-        subtitle='La pagina que buscas no existe.'
+        title='Error 404. Page not found' 
+        subtitle='The page you are looking for does not exist.'
       />,
     children: [
       {
@@ -36,6 +36,14 @@ const router = createBrowserRouter([
       },
       { path: 'settings',
         element: <SettingsPage />,
+      },
+      {
+        path: 'categories',
+        element: <CategoriesPage />,
+      },
+      {
+        path: 'documents/:category',
+        element: <DocumentsPage />,
       },
     ],
   },

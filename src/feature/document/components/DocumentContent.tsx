@@ -13,7 +13,7 @@ export function DocumentContent({ title, category, htmlText }: DocumentContentPr
       <h4 className={styles.category}>{category}</h4>
       <div 
         className={styles.content}
-        //Usaremos un sanetizador cuando agregue un compartir
+        //We will use a sanitizer when I add a share
         dangerouslySetInnerHTML={{ __html: htmlText }}
       />
     </div>
