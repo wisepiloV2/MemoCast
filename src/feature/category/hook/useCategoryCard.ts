@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { type FormEvent, useState } from 'react';
 import { categoryService } from '../service/categoryService';
 
 type ModalView = 'options' | 'edit' | 'delete';
