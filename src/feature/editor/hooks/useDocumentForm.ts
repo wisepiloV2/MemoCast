@@ -6,6 +6,7 @@ import { useDocumentById, useDocumentMutations } from '../../document';
 type DocumentFormData = {
   title: string;
   category: string;
+  htmlNote: string;
   htmlText: string;
 };
 
@@ -24,6 +25,7 @@ export function useDocumentForm() {
     defaultValues: {
       title: '',
       category: '', 
+      htmlNote: '',
       htmlText: '',
     },
   });
@@ -36,6 +38,7 @@ export function useDocumentForm() {
       reset({
         title: document.title,
         category: document.category,
+        htmlNote: document.htmlNote,
         htmlText: document.htmlText,
       });
     }

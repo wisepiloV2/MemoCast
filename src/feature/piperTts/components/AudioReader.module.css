@@ -1,7 +1,7 @@
 .floatingContainer {
   position: fixed;
   bottom: 1rem;
-  left: 50%;
+  left: 5rem;
   transform: translateX(-50%);
   z-index: 1000;
   display: flex;

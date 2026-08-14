@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: var(--btn-py-lg) var(--btn-px-lg); 
+  padding: var(--btn-py-base) var(--btn-px-base);
   font-size: var(--text-base);
   border-radius: var(--btn-radius);
   font-weight: 600;

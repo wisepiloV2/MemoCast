@@ -23,7 +23,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
           className={styles.btn} 
           onClick={onClose}
         >
-                    ✕
+          ✕
         </Button>
         {children}
       </div>

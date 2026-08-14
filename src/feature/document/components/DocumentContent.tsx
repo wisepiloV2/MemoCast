@@ -11,11 +11,7 @@ export function DocumentContent({ title, category, htmlText }: DocumentContentPr
     <div className={styles.documentContainer}>
       <h1 className={styles.title}>{title}</h1>
       <h4 className={styles.category}>{category}</h4>
-      <div 
-        className={styles.content}
-        //We will use a sanitizer when I add a share
-        dangerouslySetInnerHTML={{ __html: htmlText }}
-      />
+      <div className={styles.content} dangerouslySetInnerHTML={{ __html: htmlText }}/>
     </div>
   );
 }

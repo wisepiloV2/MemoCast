@@ -2,6 +2,7 @@ export interface Document {
     id?: number;
     title: string;
     category: string;
+    htmlNote: string;
     htmlText: string;
     createdAt: Date;
 }

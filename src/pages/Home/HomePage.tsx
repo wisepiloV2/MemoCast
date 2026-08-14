@@ -66,7 +66,8 @@ export function HomePage() {
             Categories
           </Button>
           <Button variant='primary' onClick={() => navigate('/editor')}>
-            + New Document
+            <span className={styles.newDocumentFull}>+ New Document</span>
+            <span className={styles.newDocumentShort}>+ New</span>
           </Button>
           <Button variant='ghost' onClick={() => navigate('/settings')}>
             <IconSettings />
