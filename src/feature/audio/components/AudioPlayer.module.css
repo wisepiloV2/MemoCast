@@ -1,0 +1,101 @@
+.player {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--modal-radius);
+  box-shadow: 0 10px 25px var(--modal-shadow-dark);
+  z-index: 50; 
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+}
+
+.progressContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 180px;
+  margin-left: 0.5rem;
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: var(--bg-dark); 
+  border: 1px solid var(--card-border);
+}
+
+.progress {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--btn-primary-bg); 
+  transition: width 0.2s ease;
+}
+
+.progressText {
+  min-width: 35px;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.error {
+  color: var(--accent-error);
+  font-size: var(--text-sm);
+  margin-left: 0.5rem;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--btn-radius);
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--btn-transition);
+}
+
+.control:hover {
+  background: var(--btn-secondary-hover-bg);
+  color: var(--btn-secondary-hover-border);
+}
+
+.playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  cursor: pointer;
+  transition: var(--btn-transition);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4); 
+}
+
+.playButton:hover {
+  background: var(--btn-primary-hover);
+  transform: scale(1.05); 
+}
+
+.time {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  margin-left: 0.5rem;
+  font-variant-numeric: tabular-nums; 
+  font-weight: 500;
+}

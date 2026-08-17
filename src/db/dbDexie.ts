@@ -1,9 +1,10 @@
 import Dexie, { type Table } from 'dexie';
-import { type Document, type Category } from './types';
+import { type Document, type Category, type AudioDocument } from './types';
 
 export class dbDexie extends Dexie {
   documents!: Table<Document, number>;
   categories!: Table<Category, number>;
+  audioDocuments!: Table<AudioDocument, number>;
 
   constructor() {
     super('LocalDB');
@@ -11,6 +12,12 @@ export class dbDexie extends Dexie {
     this.version(2).stores({
       documents: '++id, category, createdAt',
       categories: '++id, &name',
+    });
+
+    this.version(3).stores({
+      documents: '++id, category, createdAt',
+      categories: '++id, &name',
+      audioDocuments: 'idDocument',
     });
   }
 }

@@ -3,7 +3,7 @@ import { Button } from '../../component/Button/Button';
 import styles from './SettingsPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import { MainLayout } from '../../component/layout/MainLayout';
-import { VoiceManager } from '../../feature/piperTts';
+import { VoiceManager } from '../../feature/audio';
 
 type SettingsTab = 'voice manager';
 

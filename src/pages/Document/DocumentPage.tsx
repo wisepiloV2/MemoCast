@@ -4,7 +4,8 @@ import { MainLayout } from '../../component/layout/MainLayout';
 import { useDocumentById, DocumentContent } from '../../feature/document';
 import { Button } from '../../component/Button/Button';
 import { Modal } from '../../component/Modal/Modal';
-import { AudioReader, useTtsMutations, VoiceSelect } from '../../feature/piperTts';
+import { useVoiceMutations, VoiceSelect } from '../../feature/audio';
+import { AudioPlayer } from '../../feature/audio/components/AudioPlayer';
 import styles from './DocumentPage.module.css';
 
 export function DocumentPage() {
@@ -14,17 +15,16 @@ export function DocumentPage() {
   const documentId = id ? Number(id) : undefined;
 
   const { document, isLoading } = useDocumentById(documentId);
-
   const [selectedVoice, setSelectedVoice] = useState<string>('');
   const [isNotesOpen, setIsNotesOpen] = useState(false);
 
-  const { installedVoices } = useTtsMutations();
+  const { installedVoices } = useVoiceMutations();
 
   const activeVoice = selectedVoice || (installedVoices.length > 0 ? installedVoices[0].id : '');
 
-  const voiceOptions = installedVoices.map(voice => ({
+  const voiceOptions = installedVoices.map((voice) => ({
     value: voice.id,
-    label: voice.description,
+    label: voice.name,
   }));
 
   const renderContent = () => {
@@ -36,15 +36,11 @@ export function DocumentPage() {
       );
     }
 
-    if (!document) {
+    if (!document || documentId === undefined) {
       return (
         <div className={styles.errorContainer}>
           <h2 className={styles.errorTitle}>Document not found</h2>
-
-          <Button
-            variant="secondary"
-            onClick={() => navigate(-1)}
-          >
+          <Button variant="secondary" onClick={() => navigate(-1)}>
             Back
           </Button>
         </div>
@@ -53,11 +49,10 @@ export function DocumentPage() {
 
     return (
       <div className={styles.documentPage}>
-
         <header className={styles.header}>
           <div className={styles.headerActions}>
             <Button variant="secondary" onClick={() => navigate(-1)}>
-              Back 
+              Back
             </Button>
             <Button variant="primary" onClick={() => navigate(`/editor/${id}`)}>
               Edit Document
@@ -80,7 +75,8 @@ export function DocumentPage() {
         </section>
 
         {activeVoice && (
-          <AudioReader
+          <AudioPlayer
+            documentId={documentId}
             htmlContent={document.htmlText}
             voiceId={activeVoice}
           />
@@ -91,13 +87,10 @@ export function DocumentPage() {
           className={styles.notesButton}
           onClick={() => setIsNotesOpen(true)}
         >
-         View notes
+          View notes
         </Button>
 
-        <Modal
-          isOpen={isNotesOpen}
-          onClose={() => setIsNotesOpen(false)}
-        >
+        <Modal isOpen={isNotesOpen} onClose={() => setIsNotesOpen(false)}>
           <div className={styles.notesContent}>
             <h2>Notes</h2>
 
@@ -116,9 +109,5 @@ export function DocumentPage() {
     );
   };
 
-  return (
-    <MainLayout>
-      {renderContent()}
-    </MainLayout>
-  );
+  return <MainLayout>{renderContent()}</MainLayout>;
 }

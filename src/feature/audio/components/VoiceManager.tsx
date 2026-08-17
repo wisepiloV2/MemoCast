@@ -1,6 +1,6 @@
 import { Button } from '../../../component/Button/Button';
 import styles from './VoiceManager.module.css';
-import { useTtsMutations } from '../hooks/useTtsMutations';
+import { useVoiceMutations } from '../hooks/useVoiceMutations';
 
 export const VoiceManager = () => {
   const { 
@@ -9,7 +9,7 @@ export const VoiceManager = () => {
     downloadById,
     deleteById,
     deleteAll, 
-  } = useTtsMutations();
+  } = useVoiceMutations();
 
   const installedVoices = availableVoices.filter(voice => voice.isInstalled);
   const notInstalledVoices = availableVoices.filter(voice => !voice.isInstalled);
@@ -42,11 +42,7 @@ export const VoiceManager = () => {
                   {voice.name} 
                 </span>
                 <div className={styles.actions}>
-                  <Button 
-                    onClick={() => deleteById(voice.id)}
-                    disabled={isProcessing}
-                    variant="danger"
-                  >
+                  <Button onClick={() => deleteById(voice.id)}disabled={isProcessing} variant="danger">
                     Delete
                   </Button>
                 </div>
@@ -68,10 +64,7 @@ export const VoiceManager = () => {
                   {voice.name}
                 </span>
                 <div className={styles.actions}>
-                  <Button 
-                    onClick={() => downloadById(voice.id)}
-                    disabled={isProcessing}
-                  >
+                  <Button onClick={() => downloadById(voice.id)} disabled={isProcessing}>
                     {isProcessing ? 'Processing...' : 'Download'}
                   </Button>
                 </div>
