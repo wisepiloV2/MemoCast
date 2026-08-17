@@ -87,7 +87,7 @@ export function DocumentPage() {
           className={styles.notesButton}
           onClick={() => setIsNotesOpen(true)}
         >
-          View notes
+          Notes
         </Button>
 
         <Modal isOpen={isNotesOpen} onClose={() => setIsNotesOpen(false)}>

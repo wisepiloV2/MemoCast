@@ -1,101 +1,279 @@
 .player {
   position: fixed;
-  left: 1.5rem;
-  bottom: 1.5rem;
+  left: 1rem;
+  bottom: 1rem;
+
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  gap: 0.4rem;
+
+  max-width: calc(100vw - 8rem);
+  padding: 0.6rem 0.75rem;
+
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--modal-radius);
   box-shadow: 0 10px 25px var(--modal-shadow-dark);
-  z-index: 50; 
+
+  z-index: 50;
+
   color: var(--text-primary);
   backdrop-filter: blur(8px);
+
+  box-sizing: border-box;
 }
+
 
 .progressContainer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  min-width: 180px;
-  margin-left: 0.5rem;
+  gap: 0.5rem;
+
+  flex: 1;
+  min-width: 100px;
+
+  margin-left: 0.25rem;
 }
+
 
 .progressBar {
   flex: 1;
+
   height: 6px;
+
   overflow: hidden;
   border-radius: 9999px;
-  background: var(--bg-dark); 
+
+  background: var(--bg-dark);
   border: 1px solid var(--card-border);
 }
 
+
 .progress {
   height: 100%;
+
   border-radius: inherit;
-  background: var(--btn-primary-bg); 
+
+  background: var(--btn-primary-bg);
+
   transition: width 0.2s ease;
 }
 
+
 .progressText {
-  min-width: 35px;
+  min-width: 32px;
+
   font-size: var(--text-xs);
   color: var(--text-secondary);
+
   text-align: right;
 }
+
 
 .error {
   color: var(--accent-error);
   font-size: var(--text-sm);
-  margin-left: 0.5rem;
+
+  margin-left: 0.25rem;
 }
+
 
 .control {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
   border: none;
   border-radius: var(--btn-radius);
-  width: 44px;
-  height: 44px;
+
   background: transparent;
   color: var(--text-secondary);
+
   cursor: pointer;
+
   transition: var(--btn-transition);
 }
+
 
 .control:hover {
   background: var(--btn-secondary-hover-bg);
   color: var(--btn-secondary-hover-border);
 }
 
+
 .playButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
   border: none;
   border-radius: 50%;
+
   background: var(--btn-primary-bg);
   color: var(--btn-primary-text);
+
   cursor: pointer;
+
   transition: var(--btn-transition);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4); 
+
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
 }
+
 
 .playButton:hover {
   background: var(--btn-primary-hover);
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
+
+
 .time {
+  flex-shrink: 0;
+
   font-size: var(--text-xs);
   color: var(--text-secondary);
+
   white-space: nowrap;
-  margin-left: 0.5rem;
-  font-variant-numeric: tabular-nums; 
+
+  margin-left: 0.25rem;
+
+  font-variant-numeric: tabular-nums;
   font-weight: 500;
+}
+
+
+
+@media (max-width: 700px) {
+
+  .player {
+    left: 0.75rem;
+    bottom: 0.75rem;
+
+    max-width: calc(100vw - 7rem);
+
+    padding: 0.5rem 0.6rem;
+
+    gap: 0.25rem;
+  }
+
+
+  .control {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .playButton {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .time {
+    font-size: 0.7rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .player {
+    left: 0.5rem;
+    bottom: 0.5rem;
+
+    max-width: calc(100vw - 6.5rem);
+
+    padding: 0.45rem 0.5rem;
+
+    border-radius: 0.75rem;
+  }
+
+
+  .control {
+    width: 34px;
+    height: 34px;
+
+    font-size: 0.9rem;
+  }
+
+
+  .playButton {
+    width: 38px;
+    height: 38px;
+
+    font-size: 0.9rem;
+  }
+
+  .time {
+    font-size: 0.65rem;
+    margin-left: 0.1rem;
+  }
+
+
+  .progressContainer {
+    min-width: 70px;
+    gap: 0.35rem;
+  }
+
+
+  .progressText {
+    min-width: 27px;
+    font-size: 0.65rem;
+  }
+}
+
+
+
+@media (max-width: 380px) {
+
+  .player {
+    left: 0.4rem;
+    bottom: 0.4rem;
+
+    max-width: calc(100vw - 5.8rem);
+
+    padding: 0.4rem;
+  }
+
+
+
+  .time {
+    display: none;
+  }
+
+
+  .control {
+    width: 32px;
+    height: 32px;
+  }
+
+
+  .playButton {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .progressContainer {
+    min-width: 55px;
+  }
+
+
+  .progressText {
+    display: none;
+  }
 }

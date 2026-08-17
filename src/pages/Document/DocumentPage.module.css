@@ -52,8 +52,8 @@
 
 .notesButton {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: 5px;
+    bottom: 13px;
     z-index: 100;
 }
 
