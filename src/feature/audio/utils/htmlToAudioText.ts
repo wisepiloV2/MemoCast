@@ -11,7 +11,7 @@
 export function htmlToAudioText(html: string): string[] {
   if (!html) return [];
 
-  const MAX_CHUNK_LENGTH = 120;
+  const MAX_CHUNK_LENGTH = 80;
 
   const text = html
     .replace(/<\/(p|div|h[1-6]|ul|ol)>/gi, '\n\n') // Fin de bloques HTML

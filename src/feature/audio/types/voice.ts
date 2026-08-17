@@ -1,11 +1,11 @@
 export const voiceCatalog = {
   "es-Male": {
-    id: "es_ES-davefx-medium",
+    id: "es_ES-sharvard-medium",
     name: "Spanish",
   },
 
   "us-Male": {
-    id: "en_US-ryan-high",
+    id: "en_US-ryan-medium",
     name: "English",
   },
 } as const;
