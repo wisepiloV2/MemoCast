@@ -38,6 +38,7 @@
   /* STATES */
   --accent-error: #f43f5e;
   --error-hover-bg: rgba(244, 63, 94, 0.1);
+  --accent-success: #10b981;
 
   /* TEXT FONTSIZE */
   --text-xs: 0.75rem;    /* 12px */

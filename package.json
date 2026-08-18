@@ -12,8 +12,11 @@
   },
   "dependencies": {
     "@realtimex/piper-tts-web": "^1.1.1",
+    "@types/file-saver": "^2.0.7",
     "dexie": "^4.4.4",
     "dexie-react-hooks": "^4.4.0",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
     "onnxruntime-web": "^1.27.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

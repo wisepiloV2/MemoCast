@@ -81,6 +81,26 @@
   margin: 0 auto;
 }
 
+.dataSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.dataTitle {
+  font-size: var(--h2-size);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.dataGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
 @media (max-width: 768px) {
   .settingsContainer {
     flex-direction: column;
