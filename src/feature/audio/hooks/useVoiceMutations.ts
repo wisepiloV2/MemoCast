@@ -36,6 +36,7 @@ export function useVoiceMutations() {
     setIsProcessing(true);
     try {
       await downloadVoice(id);
+      await new Promise(resolve => setTimeout(resolve, 100));
       await checkInstalled();
     } catch (error) {
       throw new Error('Download failed', { cause: error });
@@ -48,6 +49,7 @@ export function useVoiceMutations() {
     setIsProcessing(true);
     try {
       await deleteVoice(id);
+      await new Promise(resolve => setTimeout(resolve, 100));
       await checkInstalled();
     } catch (error) {
       throw new Error('Delete failed', { cause: error });
@@ -60,6 +62,7 @@ export function useVoiceMutations() {
     setIsProcessing(true);
     try {
       await deleteAllVoices();
+      await new Promise(resolve => setTimeout(resolve, 100));
       await checkInstalled();
     } catch (error) {
       throw new Error('Delete all failed', { cause: error });
