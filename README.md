@@ -8,6 +8,8 @@ A **local-first** approach was chosen, guaranteeing privacy and speed by elimina
 
 It can currently be accessed at: https://memocast-v1.netlify.app/
 
+> **WARNING:** Audio generation is designed to run on a PC. Because it is highly resource-intensive, running it on a mobile phone may cause crashes or take an extremely long time.
+
 ---
 
 ## Main Features
